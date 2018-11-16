@@ -1,0 +1,302 @@
+
+\documentclass[12pt]{report}
+
+\usepackage{graphicx,fancyhdr}
+\usepackage{amssymb,amsmath}
+\usepackage{epigraph,fancyvrb,eqparbox}
+\usepackage[multiple]{footmisc}
+\usepackage{menukeys}
+
+
+%\usepackage{hyperref}
+%\usepackage{epsf,psfig,graphicx,fancyheadings}
+% \textwidth 7in
+% \textheight 9in
+% \oddsidemargin 0in
+% \topmargin -.25in
+
+%-----------------------------------------------
+% The following settings are from Dr. Davidian's
+% ST810A Handout on Advanced LaTeX Features
+
+%\setlength{\paperheight}{11.0in}
+%\setlength{\paperwidth}{8.5in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For Desktop @ CalPoly (for Postscript)
+
+%\setlength{\oddsidemargin}{0.5in}
+%\setlength{\evensidemargin}{0.5in}
+%\setlength{\topmargin}{-.5in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For Laptop @ Calpoly (for Postscript)
+
+% \setlength{\oddsidemargin}{0.in}
+% \setlength{\evensidemargin}{0.in}
+% \setlength{\topmargin}{0.25in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For Desktop @ CalPoly (for PDF)
+
+\setlength{\oddsidemargin}{0.in}
+\setlength{\evensidemargin}{0.in}
+\setlength{\topmargin}{-.5in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For Laptop @ Calpoly (for PDF)
+
+% \setlength{\oddsidemargin}{0.in}
+% \setlength{\evensidemargin}{0.in}
+% \setlength{\topmargin}{0.25in}
+
+
+
+
+
+
+\setlength{\headheight}{0.20in}
+\setlength{\headsep}{3ex}
+%\setlength{\headrulewidth}{0.2pt}
+%\setlength{\footrulewidth}{0.15pt}
+\setlength{\parskip}{2.3ex}
+ %set to no indentation
+\setlength{\parindent}{0.0in}
+\setlength{\baselineskip}{2ex}
+\setlength{\textheight}{9.in}
+\setlength{\textwidth}{6.5in}
+
+\def \doublespace{\openup 2\jot}
+% For double or 1.5 spacing
+%\renewcommand{\baselinestretch}{1.5}
+\tolerance=500
+
+\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern6pt
+\vbox{\kern6pt#1\kern6pt}\kern6pt\vrule}\hrule}}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+% The following for TOC
+%\renewcommand{\thepage}{\roman{page}}
+% to be followed by this for the main text
+\renewcommand{\thepage}{\arabic{page}}
+
+
+%-----------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Define any shortcut aliases below
+
+\newtheorem{theo}{Theorem}[section]
+
+\newenvironment{note}{\begin{quote}\emph{Note:\ }}{\end{quote}}
+\newenvironment{defn}{
+\begin{description}
+\item[Definition ]}
+{\end{description}}
+
+\newenvironment{ttscript}[1]{%
+    \begin{list}{}{%
+    \settowidth{\labelwidth}{\texttt{#1}}
+    \setlength{\leftmargin}{\labelwidth}
+    \addtolength{\leftmargin}{\labelsep}
+    \setlength{\parsep}{0.5ex plus0.2ex minus0.2ex}
+    \setlength{\itemsep}{0.3ex}
+    \renewcommand{\makelabel}[1]{\texttt{##1\hfill}}}}
+    {\end{list}}
+
+\newcommand{\bt}{\begin{tabular}}
+\newcommand{\et}{\end{tabular}}
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bq}{\begin{quote}}
+\newcommand{\eq}{\end{quote}}
+\newcommand{\vect}[1]{\mbox{\boldmath $ #1$}}
+\newcommand{\avg}[1]{$\overline{#1}$}
+\newcommand{\bmp}{\begin{minipage}}
+\newcommand{\emp}{\end{minipage}}
+\newcommand{\hr}{\u{\hspace{7in}}}
+\newcommand{\sr}{\u{\hspace{5in}}}
+\newcommand{\chs}{\chi^2}
+
+%\newcommand{\bv}{\footnotesize
+%\bmp{.5\textwidth}
+%\begin{Verbatim}[frame=single,label=SAS Code,commandchars=\\\{\}],xrightmargin=.5\textwidth}
+%
+%\newcommand{\ev}{\end{Verbatim}
+%\emp
+%\normalsize}
+
+\newcommand{\bv}{\begin{code}}
+\newcommand{\ev}{\end{code}}
+
+ \newenvironment{code}[1]%
+  {\vspace{.1in}\footnotesize\Verbatim[frame=single,label=SAS Code,commandchars=\\\{\},xrightmargin=#1\textwidth,framesep=.2in,labelposition=all]}
+  {\endVerbatim\normalsize}
+
+\newenvironment{craw}[2]%
+{\vspace{.1in}\footnotesize\Verbatim[frame=single,label=#2,commandchars=\\\{\},xrightmargin=#1\textwidth,framesep=.2in,labelposition=all]}
+  {\endVerbatim\normalsize}
+
+\newenvironment{cbox}[1]%
+{\vspace{.1in}\footnotesize\Verbatim[frame=single,commandchars=\\\{\},xrightmargin=#1\textwidth,framesep=.2in,labelposition=all]}
+  {\endVerbatim\normalsize}
+
+\newcommand{\head}[1]{\large \textbf{#1} \normalsize}
+
+\newcommand{\ttt}[1]{\textbf{\texttt{#1}}}
+
+
+\newcommand{\ttb}{\textbf}
+\newcommand{\tte}{\emph}
+\newcommand{\ttu}{\underline}
+
+
+
+\newcommand{\jdhr}{\vspace{0.2in}\hrule}
+
+
+\newcommand{\uspace}[1]{\underline{\hspace{#1}}}
+
+\newenvironment{ident}{\begin{list}{}{}
+         \item[]}{\end{list}}
+
+\newenvironment{proposition}{
+\begin{description}
+\item[Proposition: ]}
+{\end{description}}
+
+\newcommand{\bpr}{\begin{proposition}}
+\newcommand{\epr}{\end{proposition}}
+
+
+
+% \newenvironment{example}
+%     {
+%         \begin{list}{\textbf{Example:}}
+%         {
+%         \settowidth{\labelwidth}{}
+%         \setlength{\leftmargin}{\labelwidth}
+%         }
+%     }
+%     {\end{list}}
+
+
+\newenvironment{example}{
+\jdhr \vspace{-.17in}\jdhr
+\textbf{Example: }}
+{}
+
+\newcommand{\bex}{\begin{example}}
+\newcommand{\eex}{\end{example}}
+
+\newenvironment{onyourown}{
+\jdhr \vspace{-.17in}\jdhr
+\textbf{On Your Own: }}
+{}
+
+\newcommand{\boy}{\begin{onyourown}}
+\newcommand{\eoy}{\end{onyourown}}
+
+
+%\newenvironment{debug}{
+%\jdhr \vspace{-.17in}\jdhr
+%\ttb{Debug the Code}
+%\fbox{
+%\bmp{.95in}
+%\includegraphics[height=.35in]{C:/images/bug4.jpg}\includegraphics[height=.35in]{C:/images/buggy8.jpg}
+%\emp}
+%}
+%{\jdhr}
+
+\newenvironment{debug}{
+\jdhr \vspace{-.17in}\jdhr
+\ttb{Debug the Code: }
+\fbox{
+\bmp{.95in}
+\includegraphics[height=.35in]{C:/images/bug4.jpg}\includegraphics[height=.35in]{C:/images/mushi90.jpg}
+\emp}
+}
+{}
+
+
+\newcommand{\bbug}{\begin{debug}}
+\newcommand{\ebug}{\end{debug}}
+
+
+\begingroup
+  \catcode `_=11
+  \gdef\myuscore{_}
+  \catcode `~=11
+  \gdef\mytilde{~}
+  \catcode `\|=0
+  \catcode `\\=11
+  |gdef|mybs{\}
+|endgroup
+
+%Define any shortcut aliases above
+
+
+%....................................................................
+%....................................................................
+%....................................................................
+%....................................................................
+%....................................................................
+%....................................................................
+%....................................................................
+%....................................................................
+
+
+				
+\begin{document}
+\Large{\ttb{FAQ's:}}
+\normalsize{
+\begin{enumerate}
+\item How do I clear my log?
+\bi
+\item Make your log window active by clicking on it, and then click on the blank page symbol.
+\ei
+\item How do I clear my results window?
+\bi
+\item Submit \fbox{\ttt{ ODS HTML CLOSE; ODS HTML;}}
+\item This stops SAS from writing more output to the current ``Results Viewer'', and then creates a new ``Results Viewer'' \ttb{when further output is created}.
+\ei
+\item How do I create that fancy shortcut key that submits my code, clears my log, and submits my results?
+\bi
+\item Go to Tools $\rightarrow$ Options $\rightarrow$ Keys (or \keys{F9})
+\item In \keys{F12} type \ttb{\ttt{odsresults;clear;log;clear;wpgm;submit;log;top;}}
+\ei
+ \item  I closed my Explorer window.  How do I get it back?
+  \bi
+    \item Point-and-click to \ttt{View --> Contents Only}
+    \item Point-and-click to \ttt{View --> Results}
+ \ei
+ \item How do I tile my SAS windows?
+ \bi
+    \item Point-and-click to \ttt{Window --> Tile Vertically/Horizontally}
+ \ei
+ \item What are the options I should use to help identify errors when writing macros?
+ \item[]\fbox{\ttt{OPTIONS MPRINT MLOGIC SYMBOLGEN;}}
+ }
+\end{enumerate}
+
+
+\Large{\ttb{Shortcut keys:}}
+\normalsize{
+\bi
+\item To quickly comment/uncomment a section of code:
+	\bi
+	\item Select the code section by highlighting with the cursor and then use \keys{Ctrl} + \keys{/}
+	\item To uncomment any selected code simply use \keys{Ctrl} + \keys{Shift} + \keys{/}
+	\ei
+\item To quickly change case in the SAS editor:
+    \bi
+    \item Convert selected text to upper case \keys{Ctrl} + \keys{Shift} + \keys{U}
+    \item Convert selected text to lower case \keys{Ctrl} + \keys{Shift} + \keys{L}
+    \ei
+\ei
+
+
+\end{document} 

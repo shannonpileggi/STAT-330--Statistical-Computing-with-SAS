@@ -1,0 +1,117 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+
+
+
+\begin{document}
+\hd{10}
+\labn{10}
+\vskip10pt
+
+Many people incur debt at some point in their life, and for some it starts with student loans. The \texttt{studentloans} data is for students at some of the most and least expensive private institutions.\\
+\vskip10pt
+{\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{p{3cm} | p{12cm}}
+\ttt{Loan} &  the total amount that the student took out in loans - the loan does not accrue interest until after the student graduates \\
+\ttt{Interest} & the rate is the \emph{annual} rate which the amount to be paid back increases after graduation, and is compounded \emph{monthly} (so the monthly interest is \ttt{Interest/12})\\
+\ttt{College\textunderscore Start} &  the year the student started college\\
+\ttt{Years}&  the total number of years the student spent in school\\
+\ttt{Salary} &  the current salary of these former students\\
+\ttt{Payment} & the \emph{monthly} payment the student is making towards the loan, after graduation\\
+\end{tabular}}
+
+\begin{enumerate}
+\item Create a library reference called \texttt{mylib} to access the \texttt{studentloans} and \texttt{adni} SAS data sets.
+\item Assuming fixed income and payments, determine when each person pays off their loan by completing the following tasks with the \texttt{studentloans} data set.
+        \begin{enumerate}
+        \item Write a loop that identifies how many months until the loan is paid off (i.e., the balance is $\leq 0$).  Here is the idea behind the calculations:
+        \begin{itemize}
+            \item initialize the values of 
+            \begin{itemize} 
+            \item \texttt{months} to 1
+            \item \texttt{balance} to \texttt{loan} 
+            \item \texttt{monthly\_interest} to \texttt{interest/12}
+            \end{itemize}
+            \item each month, the monthly payment is deducted from the loan balance
+            \item each month, the loan balance increases by the interest rate
+            \item increment months by one
+            \item continue until the loan balance is less than zero
+        \end{itemize}
+        \item Print your output with an appropriate title.  Your results should look something like this (only select variables shown):
+        \item[] \includegraphics[trim=7cm 22cm 7cm 1.5cm,clip]{q2.pdf}
+        \item In a comment in your SAS code, briefly describe how SAS executed this data step.
+        \item[]
+        \end{enumerate}
+\end{enumerate}
+Recall the \ttt{adni} data set from the Alzheimer's Disease Neuroimaging Initiative (ADNI) longitudinal study that began in 2005.  This research is designed to track AD biomarkers, identify at-risk patients, and evaluate the efficacy of novel treatments. 
+\vskip20pt
+\begin{tabular}{r|l}
+\ttt{DX}   &  Alzheimer's disease diagnosis\\
+           & \hspace{0.2in} 1 - Normal cognitive function\\
+           & \hspace{0.2in} 2 - Mild cognitive impairment (MCI) \\
+           & \hspace{0.2in} 3 - Alzheimer's disease (AD) \\
+\ttt{AGE} &  Age (years) \\
+\ttt{APOE4} & Type of APOE4 variant (genetics)  \\
+            & \hspace{0.2in} 0 - No copies of the ApoE4 allele\\
+            & \hspace{0.2in} 1 - One copy of the ApoE4 allele\\
+            & \hspace{0.2in} 2 - Two copies of the ApoE4 allele\\
+\ttt{GENDER} &  Patient gender  \\
+\ttt{MMSE} & Mini Mental State Exam (score out of 30, \\
+           &lower scores indicate more cognitive impairment)\\
+\ttt{ADAS} & Alzheimer's Disease Assessment Scale (larger \\
+           & scores indicate greater dysfuction)\\
+\ttt{WholeBrain}& Brain volume (mm$^3$)\\
+\end{tabular}	
+\vskip10pt
+\textbf{Example plots to verify your work are on the last pages of this lab.} \\
+\clearpage
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Create a format for the \ttt{dx} variable that displays values as \ttt{Normal}, \ttt{MCI}, and \ttt{AD}.
+\item Create a temporary data set which copies \ttt{adni} data set.  In this temporary data set, apply the format to \ttt{dx} and also apply a label to \ttt{dx} so that it displays ``Diagnosis''.  Use this temporary data set for the remaining exercises.
+\item Bar plots
+\begin{enumerate}
+\item Create a stacked bar plot that displays the frequency of \ttt{dx} separated by \ttt{APOE4}. \emph{(Note: \ttt{APOE4} is spelled with an "oh" and not a zero.)}
+\item Create a side by side bar plot that displays the frequency of \ttt{dx} separated by \ttt{APOE4}. \emph{(Note: this is not an option we discussed in class!  You'll need to use the help file for sgplot to figure this out. )}
+\end{enumerate}
+\item Box plots
+\item[] Create a side by side box plot that shows the distribution of \ttt{MMSE} by \ttt{dx} such that the \ttt{dx} categories are displayed in order from \ttt{normal} to \ttt{MCI} to \ttt{AD}.  	\emph{(Note: in order for boxes to be displayed in order, you need to sort your data set by \ttt{dx} using \ttt{PROC SORT}.)}
+\item Histograms
+\begin{enumerate}
+    \item Create overlaid histograms that shows the distribution of the \ttt{MMSE} and \ttt{ADAS} scores.  Be sure to adjust the transparency so that the two distributions are visible.
+    \item Create overlaid histograms that shows the distribution of the \ttt{MMSE} among males and females.  Be sure to adjust the transparency so that the two distributions are visible.
+\end{enumerate}	
+\item Scatter plot	
+\item[] Create a scatter plot showing the relationship between \ttt{WholeBrain} (\emph{y}) and \ttt{AGE} (\emph{x}) with solid circles.
+\item Modify your scatter plot code from the previous question to turn it into a macro.
+\begin{enumerate}
+    \item Use the same base scatter plot, but modify it to plot points in different colors by the values of a categorical variable.
+    \item Your macro should take one parameter, which is the categorical variable that defines the colors.
+    \item Make sure the title of your plot is modified to identify the categorical variable used.
+    \item Test your macro using \ttt{gender}, \ttt{APOE4}, and \ttt{dx}.
+\end{enumerate}
+\item[]
+\end{enumerate}
+	
+\newpage
+Example plots to verify your work: \\
+\vskip10pt
+\includegraphics[width=0.45\textwidth]{Question5a1.png}
+\hspace{0.1in}
+\includegraphics[width=0.45\textwidth]{Question5b1.png}\\
+\vskip10pt
+\includegraphics[width=0.45\textwidth]{Question6.png}\\
+\vskip10pt
+\includegraphics[width=0.45\textwidth]{Question7A.png}
+\hspace{0.1in}
+\includegraphics[width=0.45\textwidth]{Question7B.png}\\
+\vskip10pt
+\includegraphics[width=0.45\textwidth]{Question8.png}
+\hspace{0.1in}
+\includegraphics[width=0.45\textwidth]{Question9a.png}
+\vskip10pt
+\includegraphics[width=0.45\textwidth]{Question9b.png}
+\hspace{0.1in}
+\includegraphics[width=0.45\textwidth]{Question9c.png}
+
+\end{document}

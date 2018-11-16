@@ -1,0 +1,27 @@
+\ft{One quantitative variable, with and without format}
+\hspace*{-0.3in}
+\bmp{0.55\textwidth}
+\footnotesize
+\begin{code}{.0}
+PROC FREQ DATA = work.babies ;
+   TABLES bwt ;
+RUN;
+
+\end{code}
+\begin{center}
+\includegraphics[trim=6cm 15cm 6.5cm 2.0cm,clip,width=0.72\textwidth]{L6_1waytableNOformat.pdf}
+\end{center}
+\emp
+\bmp{0.03\textwidth} \hspace{1in} \emp
+\bmp{0.55\textwidth}
+\footnotesize
+\begin{code}{.0}
+PROC FREQ DATA = work.babies ;
+    TABLES bwt ;
+    \textcolor{OrangeRed}{FORMAT bwt birthweight. ;}
+RUN;
+\end{code}
+\begin{center}
+\includegraphics[trim=6.0cm 15.5cm 6.0cm 2.0cm,clip,width=0.8\textwidth]{L6_1waytableWITHformat.pdf}
+\end{center}
+\emp

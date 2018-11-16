@@ -1,0 +1,24 @@
+\ft{Example Code}
+\bmp{0.65\textwidth}
+\footnotesize
+\begin{code}{.0}
+DATA statstransposed2 ;
+   SET statstransposed ;
+   FORMAT mean 4.1 std 4.1 ;
+RUN ;
+
+PROC EXPORT
+   DATA = statstransposed2
+   OUTFILE = "&path.summarystats.csv"
+   DBMS = CSV
+   REPLACE ;
+RUN;
+\end{code}
+\emp
+\bmp{0.03\textwidth} \hspace{0.05in} \emp
+\bmp{0.38\textwidth}
+\bi
+\item any format assigned to variables in the DATA step will be applied in the exported file for \ttt{.csv} or \ttt{.txt} files
+\item exporting to \ttt{.xls} or \ttt{.xlsx} does not apply formats
+\ei
+\emp

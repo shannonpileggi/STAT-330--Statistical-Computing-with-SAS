@@ -1,0 +1,63 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+\begin{document}
+\hd{13}
+\labn{13}
+\vskip10pt
+This data set (\ttt{mariokart.sas7bdat}) includes all auctions on Ebay for a full week in October, 2009. Auctions were included in the data set if they satisfied a number of conditions. (1) They were included in a search for "wii mario kart" on ebay.com, (2) items were in the Video Games $>$ Games $>$ Nintendo Wii section of Ebay, (3) the listing was an auction and not exclusively a ``Buy it Now'' listing (sellers sometimes offer an optional higher price for a buyer to end bidding and win the auction immediately, which is an optional Buy it Now auction), (4) the item listed was the actual game, (5) the item was being sold from the US, (6) the item had at least one bidder, (7) there were no other items included in the auction with the exception of racing wheels, either generic or brand-name being acceptable, and (8) the auction did not end with a Buy It Now option.  All prices are in US dollars. Our goal for this lab to create models for the total selling price of the Ebay package (\ttt{totalPr}).
+\vskip10pt
+\begin{tabular}{r|l}
+\ttt{ID} &   	Auction ID assigned by Ebay.\\
+\ttt{duration} & 	Auction length, in days. \\
+\ttt{nBids} &		Number of bids.	 \\
+\ttt{cond} & 		Game condition, either new or used. \\
+\ttt{startPr} &	Starting price of the auction. \\
+\ttt{shipPr} &	Shipping price. \\
+\ttt{totalPr} &	Total price, which equals the auction price plus the shipping price. \\
+\ttt{shipSp} & 	Shipping speed or method. \\
+\ttt{sellerRate} & 	The seller's rating on Ebay (number of positive ratings minus the \\
+& number of negative ratings). \\
+\ttt{stockPhoto} &	Whether or not the auction feature photo was a ``stock'' photo. \\
+\ttt{wheels} &	Number of Wii wheels included in the auction. \\
+\ttt{title} &		The title of the auctions. \\
+\end{tabular}
+\vskip10pt
+\begin{enumerate}
+\item Begin by exploring the data set.  There are a two observations that really don't fit the pattern of the rest with regards to total selling price.  Identify these observations and explain why they are outliers in a comment in your SAS code. \emph{(Hint: Examine the title for these observations.)}
+\item Create a temporary data set that is a copy of the original marioKart data set.  In this temporary data set, remove the outliers that you identified in question 1.  Use this data set for the remaining exercises.
+\item Continue working with your temporary data set.  Create two new indicator variables coded as 0/1:
+\begin{enumerate}
+    \item \ttt{condI}  is an indicator for condition of the game (\ttt{cond}), where 1=new and 0=used
+    \item \ttt{photoI}  is an indicator for \ttt{stockPhoto}, where 1=yes and 0=no
+\end{enumerate}
+\item[] Write some code to verify that both of these variables were created correctly (as discussed in Lecture 9).
+\item Continue working with your temporary data set.  Note that marioKart packages can come with 0 through 4 wheels, but only a couple of packages come with 3 or 4 wheels.  Create a new variable called \ttt{wheelsnew} that is coded as 0 wheels, 1 wheel, or 2+ wheels.  Write some code to verify that this variable was created correctly (as discussed in Lecture 9).
+\item
+Examine the relationship between total selling price (\ttt{totalPr}) and number of wheels (\ttt{wheelsnew}).
+\begin{enumerate}
+\item We want to use analysis of variance to determine if population average total selling price (\ttt{totalPr}) differs by the number of wheels a package comes with (\ttt{wheelsnew}).  Do we have unbalanced data for this analysis?  Can we use \ttt{PROC ANOVA}? Answer these questions in a comment in your SAS code.
+\item Use analysis of variance to determine if population average total selling price (\ttt{totalPr}) differs by the number of wheels a package comes with (\ttt{wheelsnew}) at the 0.05 significance level.
+In a comment in your SAS code, briefly describe your findings.
+\item
+If appropriate, perform pairwise comparisons to determine which population means differ based on the method of your choice.  In a comment in your SAS code, briefly describe your findings.
+\item
+Are conditions satisfied for analysis of variance?  Perform any SAS procedures necessary to investigate this and comment on your findings in your SAS code.
+\end{enumerate}
+\item Now let's use regression to examine the relationship between total selling price (\ttt{totalPr}) and other variables.
+\begin{enumerate}
+    \item Use \ttt{PROC CORR} to examine correlations and produce scatter plots between \ttt{totalPr} and the following quantitative variables in the data set. (Quantitative variables include:  \ttt{duration}, \ttt{nBids}, \ttt{startPr}, \ttt{shipPr}, and \ttt{SellerRate}.)
+    \item From your results in the part (a), which variable has the strongest linear association with \ttt{totalPr}?  Briefly describe this association in a comment in your SAS code.
+    \item Estimate the regression model between \ttt{totalPr} and the independent variable you selected in part (b).  Write the estimated regression equation in a comment in your SAS code.
+    \item Are conditions satisfied for your regression model in (c)?  Perform any SAS procedures necessary to investigate this.  In a comment in your SAS code state what you did to check the conditions and state your findings.
+    \item Use the model statement below in \texttt{PROC REG} and substitute in the model selection method of your choice to identify a ``best'' model for \ttt{totalPr}.  Identify the final variables in your model in a comment in your SAS code.
+    \item[]
+    \begin{code}{.0}
+    MODEL totalpr = duration nBids startPr shipPr
+                    SellerRate wheels condI photoI
+                    / SELECTION =   ;
+    \end{code}
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document} 

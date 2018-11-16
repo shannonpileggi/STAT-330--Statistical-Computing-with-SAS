@@ -1,0 +1,56 @@
+
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+
+
+
+\begin{document}
+\hd{3}
+\labn{3}
+\vskip10pt
+The \texttt{mariokart} data set includes all auctions on Ebay for a full week in October, 2009. Auctions were included in the data set if they satisfied a number of conditions. (1) They were included in a search for "wii mario kart" on ebay.com, (2) items were in the Video Games $>$ Games $>$ Nintendo Wii section of Ebay, (3) the listing was an auction and not exclusively a ``Buy it Now'' listing (sellers sometimes offer an optional higher price for a buyer to end bidding and win the auction immediately, which is an optional Buy it Now auction), (4) the item listed was the actual game, (5) the item was being sold from the US, (6) the item had at least one bidder, (7) there were no other items included in the auction with the exception of racing wheels, either generic or brand-name being acceptable, and (8) the auction did not end with a Buy It Now option.  All prices are in US dollars. Our goal for this lab to create models for the total selling price of the Ebay package (\ttt{totalPr}).
+\vskip10pt
+\ttt{mariokart.sas7bdat}:\\
+\vskip5pt
+\begin{tabular}{r|l}
+\ttt{ID} &   	Auction ID assigned by Ebay.\\
+\ttt{duration} & 	Auction length, in days. \\
+\ttt{nBids} &		Number of bids.	 \\
+\ttt{cond} & 		Game condition, either new or used. \\
+\ttt{startPr} &	Starting price of the auction. \\
+\ttt{shipPr} &	Shipping price. \\
+\ttt{totalPr} &	Total price, which equals the auction price plus the shipping price. \\
+\ttt{shipSp} & 	Shipping speed or method. \\
+\ttt{sellerRate} & 	The seller's rating on Ebay (number of positive ratings minus the \\
+& number of negative ratings). \\
+\ttt{stockPhoto} &	Whether or not the auction feature photo was a ``stock'' photo. \\
+\ttt{wheels} &	Number of Wii wheels included in the auction. \\
+\ttt{title} &		The title of the auctions. \\
+\end{tabular}
+\vskip10pt
+\begin{enumerate}
+\item Identify the \ttt{mariokart.sas7bdat} file from either PolyLearn or the shared drive.  Save the file to a location on your computer or your flash drive.
+\item Create a library reference called \texttt{mylib} to access the \ttt{mariokart.sas7bdat}.
+\item Explore the \emph{total selling price} variable with any of PROCS that we have learned so far (\texttt{PROC CONTENTS, PROC PRINT, PROC MEANS, PROC FREQ, PROC UNIVARIATE}).  There are a two observations that really don't fit the pattern of the rest with regards to total selling price.  Identify these observations and explain why they are outliers in a comment in your SAS code.  (In future classes we will learn how to ``clean'' these observations, but for now we will leave them as is.)
+\item An eBay official claims that the population mean number of bids received exceeds 10.  Test the hypotheses $H_0$: $\mu=12$ vs $H_a$: $\mu \neq 12$ and compute a 95\% confidence interval for $\mu$ using \texttt{PROC UNIVARIATE}.  Fill in the blanks in the paragraph below to interpret the results.
+\begin{itemize}
+\item[] \doublespacing
+        Based on \underline{(insert \#)} packages for sale on eBay, the average number of bids a package received is \bs with a standard deviation of \bs.  We used a one sample t-test to test $H_0$: $\mu=12$ vs $H_a$: $\mu \neq 12$, where $\mu$ represents the population average number of bids.  The test statistic is $t=$ \bs and the $p$-value is \bs.  We \underline{(do / do not)} have evidence that the population mean number of bids differs from 12.  Furthermore, a 95\% confidence interval for the population mean number of bids is (\bs, \bs).  This \underline{(does / does not)} provide evidence that the population mean number of bids exceeds 12.
+\end{itemize} 
+\item Replicate your summary statistics and confidence interval findings (not the hypothesis test) from the previous question using \ttt{PROC MEANS}.  Below is the output that you are trying to achieve.  \emph{Hint: you need to use statistics key words.}
+\item[] \bmp{.5\textwidth}
+\includegraphics[trim={5cm 23cm 5cm 0cm},clip]{q5.pdf}
+\emp
+\item Use a SAS procedure to identify the percent of packages that were sold with 2 wheels.  Note your findings as a comment in your SAS code.
+\item Examine the relationship between condition of the package and number of wheels by creating a contingency table with wheels on the rows and condition on the columns.  In a comment in your SAS code, report the percent of new packages that came with zero wheels and the percent of used packages that came with zero wheels.  Modify your table so that only frequencies and these percents are presented.  \emph{(Your table will still be 4x2, with total rows and columns, but each cell should only have two numbers: a frequency and the relevant percent to compare new versus used packages.)}
+\item Perform a chi-squared test to determine if there is an association between condition of the package and whether or not the package has a stock photo; in addition, print the expected cell counts for the table.  (\emph{Hint: Use the help file, this is an option on the TABLES statement.}) The contingency table should only display frequencies and expected cell counts, as shown in the output below.  Fill in the blanks in the following paragraph to interpret the results.
+\begin{itemize}
+\item[] \doublespacing
+        We used a chi-squared test to assess $H_0$: there \underline{(is / is not)} an association between condition and stock photo versus $H_a$: there \underline{(is / is not)} an association between condition and stock photo.  The chi-squared test statistic is $\chi^2=$ \bs and the $p$-value is \bs.  We \underline{(do / do not)} have evidence of an association between condition of the package and stock photo.  Furthermore, \underline{\emph{(insert \#)}} expected cell counts exceed 5, so the expected cell count condition for the chi-squared test \underline{(is / is not)} satisfied.
+\end{itemize} 
+\item[] \bmp{.5\textwidth}
+\includegraphics[trim={4cm 10cm 4cm 0cm},clip]{q8.pdf}
+\emp
+\end{enumerate}
+
+\end{document}

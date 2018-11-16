@@ -1,0 +1,14 @@
+\ft{Joins (combining data)}
+\begin{tabular}{p{4cm} cc}
+\hline
+Feature & \ttt{PROC SQL} & \ttt{DATA} step merging \\
+\hline \hline
+Requires sorted data sets & \rx & \gc \\
+& & \\
+Requires same name for identifying variable  & \rx & \gc \\
+& & \\
+Can handle many to many relationship   & \gc & \rx \\
+\hline
+\end{tabular}
+\vskip10pt
+\url{http://www.listendata.com/2014/06/proc-sql-merging.html}

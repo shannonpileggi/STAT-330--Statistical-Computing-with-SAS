@@ -1,0 +1,6 @@
+\ft{\%DO loop}
+\bi
+\item The \verb|%DO ... %TO| statement allows you to perform loops inside a macro. \\
+\item \ttt{\%DO} loops in macros have the same kind of structure as standard \ttt{DO} loops in regular SAS code.\\
+\item As with the conditional logic statements in macros \textbf{[}i.e. \verb|%IF ... %THEN|\textbf{]}, these statements \textbf{must} be embedded within a macro module -- they \textbf{cannot}  be placed outside of a macro module and in ``open SAS code''.\\
+\ei

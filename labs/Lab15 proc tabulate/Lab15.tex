@@ -1,0 +1,81 @@
+
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+\begin{document}
+\hd{15}
+\labn{15}
+\vskip10pt
+
+\noindent Recall Lab 14 where you created a table of descriptive statistics of the 2012 Olympic Medalists by country using the \ttt{O2012.sas7bdat} data set (this data set name starts with an ``oh'' and not a zero).  In this lab, you are going to follow a series of steps to re-create that table using \ttt{PROC TABULATE}.  Skip to page 4 to see an example table.
+ \begin{enumerate}
+\item In a comment in your SAS code, briefly describe the programming approach you took to create the table displayed on page 3 in Lab 14.
+\begin{enumerate}
+\item What actions did you do in data steps?
+\item What actions did you do in procedures?
+\end{enumerate}
+\item In a comment in your SAS code, briefly describe your game plan for creating this table with \ttt{PROC TABULATE}.
+\begin{enumerate}
+\item What actions will you need to do in data steps?
+\item What actions will you need to do you do in procedures?
+\item Briefly, describe the \emph{structure} of the table that you want to create.
+\begin{enumerate}
+\item What is the table dimension?
+\item What goes on the rows, columns, and pages?
+\end{enumerate}
+\end{enumerate}
+\item Create a SAS library to access the \ttt{O2012.sas7bdat}.
+\item Follow the subsequent steps to establish the \emph{structure} of the table from Lab 14 using \ttt{PROC TABULATE}.  Your goal for this question is to create the table structure by following the subsequent steps:
+%\item[] \includegraphics[trim={2cm 22.0cm 1cm 1.7cm},clip,width=1.0\textwidth]{q4e.pdf}
+%\item[]
+\begin{enumerate}
+\item Use \ttt{PROC TABULATE} to create a table that has rows for different countries and a single column that represents the number of Olympic medalists from that country.
+\item[] \includegraphics[trim={3cm 24.0cm 3cm 0cm},clip,width=1.0\textwidth]{q4a.pdf}
+\item Copy and paste your SAS code from the previous step.  Modify this code so that the table now has an additional column that represents the sum of the total number of medals won by that country.
+\item[] \includegraphics[trim={3cm 24.0cm 3cm 0cm},clip,width=1.0\textwidth]{q4b.pdf}
+\item Copy and paste your SAS code from the previous step.  Modify this code so that the table now has three statistics for the total number of medals: sum, average total medals won, and maximum total medals won by an athlete.  Your table now has 4 columns.
+\item[] \includegraphics[trim={3cm 24.0cm 3cm 0cm},clip,width=1.0\textwidth]{q4c.pdf}
+\item Copy and paste your SAS code from the previous step.  Modify this code so that the table now has two additional columns for the average age and average weight of the Olympic athletes.
+\item[] \includegraphics[trim={3cm 24.0cm 3cm 0cm},clip,width=1.0\textwidth]{q4d.pdf}    
+\item Copy and paste your SAS code from the previous step.  Modify this code so that the table now has two additional columns for the percent of each country's Olympic medalists that are male and female.
+\item[] \includegraphics[trim={1cm 22.0cm 1cm 0.5cm},clip,width=1.0\textwidth]{q4e.pdf}
+\end{enumerate}
+\item Copy and paste your SAS code from the previous step.  Modify this code so that the table \emph{header} appears as below (you will \emph{format variable values} in the next step).  This requires using various forms of labels.
+\item[] \includegraphics[trim={1cm 22.0cm 1cm 0.5cm},clip,width=1.0\textwidth]{q5.pdf}
+\item Copy and paste your SAS code from the previous step.  Follow the subsequent steps to modify this code to \emph{format variable values} so that they appear as below.
+\begin{enumerate}
+    \item Apply the following formats to variable values:
+    \item[]
+    \begin{tabular}{rl}
+    %statistic & display \\
+    sum of total medals & no decimal places \\
+    average of total medals & two decimal places \\
+    max of total medals & no decimal places \\
+    average age & one decimal place \\
+    average weight & one decimal place \\
+    \end{tabular}
+    \item Create and apply a format for gender such values display as ``Female'' and ``Male''. %\emph{Hint: When creating and apply formats for a character variable, you need to use a dollar sign (\$).}
+    \item Create and apply a picture format for percent such that percents display as rounded to one decimal place with a percent sign.  %\emph{Hint: Review Example 8 in the supplemental SAS code provided with Lecture 16.}
+    \item Change the display of missing values from period (.) to three horizontal dashes (``---'') by using the \ttt{MISSTEXT} \emph{option} on the \ttt{TABLE} statement.
+\end{enumerate}
+\item[] \includegraphics[trim={1cm 22.0cm 1cm 0.5cm},clip,width=1.0\textwidth]{q6.pdf}
+
+\item Copy and paste your SAS code from the previous step.  Modify this code to highlight the background color of cells that correspond to countries with more than 20 athletes in the color of your choice.  (See last page for an example.)
+\item Copy and paste your SAS code from the previous step.  Modify this code to export your table to a pdf.
+\item Copy and paste your SAS code from the previous step.  Modify this code to create a macro that allows you to quickly view combinations of styles and colors as follows:
+\begin{enumerate}
+\item Include macro debugging options in your SAS code.
+\item The macro should take two parameters: one for the \emph{style} of the pdf, and one for the \emph{color} of the highlighted cells.
+\item The file name  of the pdf should indicate the \emph{style} and \emph{color} used.
+\item The document title should indicate the \emph{style} and \emph{color} used.
+\item Execute the macro at least three times:
+\begin{enumerate}
+\item \emph{Pearl} style (this is the default style), highlight color of your choice
+\item new style of your choice, new highlight color of your choice
+\item new style of your choice, new highlight color of your choice
+\end{enumerate}
+\item Open the pdfs you created.  In a comment in your SAS code, note your preferred style/color combination.  Upload these pdfs in addition to your SAS code.
+\end{enumerate}
+\end{enumerate}
+\newpage
+\includegraphics[trim={2cm 0cm 2cm 0cm},clip,width=0.95\textwidth]{Lab15table_Chartreuse_Pearl.pdf}
+\end{document} 

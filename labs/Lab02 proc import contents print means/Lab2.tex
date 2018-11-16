@@ -1,0 +1,66 @@
+
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+
+
+
+\begin{document}
+\hd{2}
+\labn{2}
+\vskip10pt
+This US Surgeon General's warning was placed on the side of cigarette packages beginning in 1985.   Prior to the placement of the warning, studies had to be conducted to investigate the effects of smoking during pregnancy.  The data provided are part of the Child Health and Development Studies, which was a comprehensive investigation of all pregnancies that occurred between 1960 and 1967 among women in the Kaiser Foundation Health Plan in the San Francisco-East Bay area.  Despite the warnings which went into effect in 1985, the National Center for Health Statistics found that 15\% of women who gave birth in 1996 smoked during their pregnancy.  (What year were you born?)
+\\\\
+%\vskip5pt
+\noindent Why do we care about baby birth weight?  Birth weight is a measure of a baby's maturity.  Typically, smaller babies have lower survival rates than than larger babies.  In this study, the rate at which babies died within 28 days of birth was 150 per thousand births for low birth weight babies, compared to 5 per thousand for babies of 'normal' weight.  Babies that weigh under 5.5 pounds are considered of low birth weight.
+\\\\
+%\vskip5pt
+\noindent \texttt{babies.csv}
+\\\\
+%\vskip5pt
+\begin{tabular}{r|l}
+\ttt{bwt} & baby's weight at birth in ounces\\
+\ttt{gestation} & length of pregnancy in days\\
+\ttt{parity} & 0=first born, 1=otherwise\\
+\ttt{age} & mother's age in years\\
+\ttt{height} & mother's height in inches\\
+\ttt{weight} & mother's pregnancy weight in pounds\\
+\ttt{smoke} & smoking status of mother: 0=not now, 1=yes now\\
+\end{tabular}
+
+\begin{enumerate}
+%\item Assign the computer location of your STAT 330 data set to a macro variable called \ttt{path}.
+\item Read the \ttt{babies.csv} data into SAS using \ttt{PROC IMPORT}.  Include the \ttt{PROC IMPORT} code in your SAS program.  Note that you will be referring to the data set as \texttt{work.babies} (not \texttt{sashelp.babies}).
+\item Use a SAS procedure to identify the number of variables and observations in the data set.  Write your findings in a comment in your SAS code.
+\item Use a single SAS procedure to print the data set following these guidelines.  A figure showing how your output should look is on the next page.
+\begin{itemize}
+\item Only print the first 20 observations.
+\item Only print the birth weight and gestation period variables.
+\item Do not print the observation number.
+\item Include the sum of the birth weights.
+\item Insert a blank line after every 5 observations.
+\end{itemize}
+\item Apply the \texttt{MEANS} procedure to the \texttt{babies} data set.  Do all of the numeric summaries make sense?  Explain why or why not.
+\item Use a SAS procedure to obtain summary statistics of baby birth weight \emph{separately} for smoking and non-smoking mothers as follows (output shown on next page):
+\begin{itemize}
+\item Only obtain $N$, the sample mean, and the sample standard deviation.
+\item Round the statistics to one decimal place.
+\item Suppress the double printing of the number of observations.
+\end{itemize}
+What is the relationship you observe between maternal smoking status and babies' birth weight? Note your observations in a comment in your SAS code.
+\item  Copy and paste the SAS code from your previous question.  Now modify it to separate the summary statistics for birth weight by parity in addition to mother's smoking status (see output on next page).  Identify the correct responses in the places underlined in this sentence:
+\begin{itemize}
+\item[] \doublespacing \underline{(First born / Non-first born)} babies born to mothers who \underline{(did / did not)} smoke had the \emph{largest} average birth weight.  Within each smoking status, the effect of parity is that first born babies tend to weigh about \underline{(X)} ounces \underline{(more / less)} than non-first born babies.
+\end{itemize}
+\item Review the SAS output that you used to answer question 6.  If you could modify the display to make the output easier to interpret, what would you change?
+\item[]
+\end{enumerate}
+%\clearpage
+\bmp{.5\textwidth}
+\includegraphics[trim={7cm 3cm 7cm 0cm},clip]{q3.pdf}
+\emp
+\bmp{.5\textwidth}
+\includegraphics[trim={7cm 20cm 7cm 0cm},clip]{q5.pdf}\\
+\includegraphics[trim={7cm 15cm 7cm 0cm},clip]{q6.pdf}
+\emp
+%\VerbatimInput[fontsize=normal]{q6.lst}
+\end{document} 

@@ -1,0 +1,21 @@
+\ft{Example}
+\bmp{1.0\textwidth}
+\begin{craw}{.0}{beer.csv}
+Consumption per capita [1],,,
+Country,Consumption (liters),2009–2010 (change 633-ml bottles),Total national consumption (106 L)
+Vietnam,19,,
+Venezuela,83,-4.7,2259
+Uzbekistan,11,,
+United States,78,-2.5,24138
+United Kingdom,74,-3.4,4587
+\end{craw}
+\vskip3pt
+\begin{code}{.0}
+DATA beer;
+   INFILE "\&path.beer.csv" DSD FIRSTOBS=3 DLM=",";
+   INPUT country :\$30. consumption change total;
+RUN;
+\end{code}
+\emp
+%\vskip10pt
+%\emph{Note: you must close the csv file in excel before you import the data in SAS.}

@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Programming Basics}{3}{0}{1}
+\beamer@sectionintoc {2}{PROC CONTENTS}{6}{0}{2}
+\beamer@sectionintoc {3}{PROC PRINT}{11}{0}{3}
+\beamer@sectionintoc {4}{PROC MEANS}{16}{0}{4}
+\beamer@sectionintoc {5}{PROC IMPORT}{22}{0}{5}

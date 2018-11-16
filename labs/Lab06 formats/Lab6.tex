@@ -1,0 +1,56 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+
+
+
+\begin{document}
+\hd{6}
+\labn{6}
+\vskip10pt
+\begin{tabular}{r|l}
+\texttt{name} & Name of student \\
+\texttt{bills} & Amount spend monthly on bills (\$) \\
+\texttt{reside} & If a student resides on or off campus \\
+\texttt{status} & Year at Cal Poly \\
+\texttt{mile} & Time to run the mile \\
+\texttt{bday} & Date of birth  \\
+\texttt{pronoun} & gender pronoun \\
+                 & 1 = he/him/his \\
+                 & 2 = she/her/hers \\
+                 & 3 = they/them/theirs \\
+\end{tabular}
+\vskip10pt
+
+\begin{enumerate}
+\item Utilize the instream data technique to create temporary SAS data set called \texttt{class} that imports the values below \emph{exactly} as shown according to the names listed above.  Print the data set and verify that your output matches the output shown.\\
+\begin{minipage}{0.54\textwidth}
+\begin{craw}{.0}{Data}
+Bob $343.26 on 1st 8:45 7-may-1999 1
+Mary $201.83 on 1st 7:11 28-jun-2000 2
+Susan $345.89 off 2nd 6:52 17-dec-2001 2
+Lex $150.01 off 3rd 8:16 23-apr-2000 3
+Harry $300.65 off 4th 9:38 14-sep-2001 1
+Sally $270.94 on 2nd 9:29 11-feb-1998 3
+Mike $180.82 off 4th 8:56 26-nov-2001 1
+\end{craw}
+\end{minipage}
+\begin{minipage}{0.03\textwidth} \hspace{1in} \end{minipage}
+%\begin{minipage}{0.35\textwidth}
+\item[]\includegraphics[trim={6.0cm 22cm 5.0cm 1.5cm},clip]{q1.pdf}
+%\end{minipage}
+\item Utlize PROC FREQ on \fbox{\texttt{reside status pronoun}}, and PROC MEANS on \fbox{\texttt{bills mile bday}}; further verify that your output is an exact match to that shown below.
+\item[] \includegraphics[trim={5.0cm 15.5cm 5.0cm 1.5cm},clip]{q2a.pdf}
+\item[] \includegraphics[trim={5.0cm 23cm 5.0cm 1.5cm},clip]{q2b.pdf}
+\item Create a temporary data set called \texttt{class2} that copies \texttt{class}.  In this temporary data set, create three new variables that represent the day, month, and year that the student was born.  Your output should match that shown below.  Use \texttt{class2} for the remaining exercises.
+\item[] \includegraphics[trim={4.0cm 22cm 4.0cm 1.5cm},clip]{q3.pdf}
+\item Print the values of \fbox{\texttt{mile bday}} for Bob formatted as shown below.  In a comment in your SAS code, provide an interpretation of Bill's \texttt{mile} and \texttt{bday}.
+\item[] \includegraphics[trim={5.0cm 25cm 5.0cm 1.5cm},clip]{q4.pdf}
+\item Print the data as exactly as shown below using built-in SAS formats.
+\item[] \includegraphics[trim={3.0cm 20cm 3.0cm 1.5cm},clip]{q5.pdf}
+\item Create your own formats for the variables \fbox{\texttt{pronoun reside month}}.  Pronoun values of 1, 2, and 3 should be displayed according to the data dictionary at the beginning of the assignment.  Campus should be displayed as ``On Campus'' and ``Off Campus''.  Lastly, the month values should be displayed as quarter such that individuals born Jan, Feb, Mar are in the ``1st Quarter'', etc.  Print the data as exactly as shown below using the built-in SAS formats from the previous question and your newly created SAS formats.  (\textbf{Nothing} should be done in a DATA step.)
+\item[] \includegraphics[trim={1.0cm 20cm 1.0cm 1.5cm},clip,width=1.0\textwidth]{q6.pdf}
+\end{enumerate}
+
+
+
+\end{document} 

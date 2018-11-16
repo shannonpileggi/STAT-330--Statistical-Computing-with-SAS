@@ -1,0 +1,48 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+
+
+
+\begin{document}
+\hd{5}
+\labn{5}
+\vskip10pt
+The \texttt{O2012.sas7bdat} contains information about medalists from the 2012 Olympics.  \textbf{Note that this data set starts with an ``oh'' and not a ``zero''.}
+\vskip5pt
+\begin{enumerate}
+\item Include the options required for debugging SAS macros at the top of your SAS program.
+\item Locate the \texttt{O2012.sas7bdat} from the shared drive or PolyLearn and save it to a location on your computer.  Create a macro variable called \ttt{path} that corresponds to this location on your computer.
+\item Use the \ttt{path} macro variable to create a SAS library called \fbox{\texttt{x}} to access the \ttt{O2012.sas7bdat} data set.
+\item Write a two to three SAS procedures to help you familiarize yourself with the data and summarize the data. How many observations are there? What does an observation represent?  \emph{(This is key to understanding this data set, so you may want to confirm your answer with your neighboring students or the instructor.)}  Note your findings in a comment in your SAS code.
+\item Utilize a procedure to determine the countries represented in this data set.  How many medalists did the US have?  Note your findings as a comment in your SAS code.
+\item Now, \emph{for the United States only}, utilize a procedure to determine in which sports the United States medalled (this should match the output below).  In which sport did the US have the most medalists?  Note your findings as a comment in your SAS code.
+\item[]\includegraphics[trim={4cm 20cm 4cm 0.5cm},clip]{q6.pdf}
+\item Print the variables \fbox{\ttt{name country sport gold silver bronze total}} for the 5 medalists who won in ``Gymnastics - Artistic'' for the US.  This should match the output below.
+\item[]\includegraphics[trim={2cm 23cm 2cm 0.5cm},clip]{q7.pdf}
+\item[] Examine this output closely.  How many Gymnastic - Artistic medalists did the US have?  And how many \emph{total} medals did they earn all together?  Note your findings as a comment in your SAS code.
+\item Recreate the output shown below, which summarizes the total number of medalists (\ttt{N Obs}) and total number of medals earned (\ttt{Sum}) by sport for the United States of America.
+\item[]\includegraphics[trim={2cm 19cm 3cm 0.5cm},clip]{q8.pdf}
+\item[] Note the Gymnastics - Artistic line should correspond to your answers for the previous question.
+\item Copy and paste the code from the previous question and convert it to a \emph{macro module} called \ttt{country\_report} that can produce the above summary for any given country.  This macro module should have a  parameter value called \ttt{my\_country}, where the default value of \ttt{my\_country} corresponds to the US.  The title of the output should also be stated as shown in the previous output.
+\item Execute \ttt{country\_report} macro module as follows:
+\begin{enumerate}
+\item with the default value for \ttt{my\_country}
+\item for Germany
+\item another country of your choice
+\item another country of your choice
+\end{enumerate}
+The Germany output should match the output shown below.
+\item[]\includegraphics[trim={2cm 18cm 3cm 0.5cm},clip]{q10.pdf}
+\item Create a temporary data set called \ttt{olympics} that copies the \ttt{02012} data set.  Create a variable name \ttt{Peter} which takes on a value of \ttt{yes} if ``Peter'' is in the \ttt{name} field and \ttt{no} otherwise.  Then utilize a SAS procedure to print the variables \fbox{\ttt{name country sport gold silver bronze total peter}} for all of the medalists named ``Peter''.  Your results should match the results below, including the title.
+\item[]\includegraphics[trim={2cm 22cm 2cm 0.5cm},clip]{q11.pdf}
+\item Copy and paste your code from question 11.  Convert this code to a macro module called \ttt{name\_look\_up}. This macro module should have a  parameter value called \ttt{my\_name}, where the default value of \ttt{my\_name} corresponds to \ttt{Peter}.
+\item Execute \ttt{name\_look\_up} macro module as follows:
+\begin{enumerate}
+\item with the default value for \ttt{my\_name} (should match output from question 11)
+\item for Daniel (output shown below)
+\item another name of your choice
+\item another name of your choice
+\end{enumerate}
+\item[]\includegraphics[trim={2cm 22cm 2cm 0.5cm},clip]{q13.pdf}
+\end{enumerate}
+\end{document} 

@@ -1,0 +1,15 @@
+\ft{PROC REPORT vs PROC TABULATE}
+\begin{tabular}{lcc}
+\hline
+ & \ttt{PROC REPORT} & \ttt{PROC TABULATE} \\
+ \hline \hline
+ Create summary tables & \gc & \gc \\
+ \hline
+Create detail tables & \gc & \rx \\
+Lines between groups & \gc & \rx \\
+Calculate new item & \gc & \rx \\
+\hline
+Multiple nested variables & \rx & \gc \\
+Statistics options & less & more \\
+\hline
+\end{tabular}

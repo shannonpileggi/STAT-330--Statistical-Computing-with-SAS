@@ -1,0 +1,108 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+\begin{document}
+\hd{11}
+\labn{11}
+\vskip10pt
+Research on the harmful effects of lead poisoning began in the 1970's.  Lead poisoning  affects the development of the nervous system and therefore has a higher impact in children than adults. Exposure can be occupational or recreational through contaminated air, soil, water, or food.  Effects of lead poisoning include learning disabilities and behavioral problems; high levels of exposure can lead to seizures, coma, and even death.
+\vskip10pt
+The data presented here are from one of the first quantitative research articles on the topic, published in the \emph{The Lancet} in 1975 \footnote{Philip J Landrigan, Robert W Baloh, William F Barthel, Randolph H Whitworth, NormanW Staehling,
+and Bernard F Rosenblum. Neuropsychological dysfunction in children with chronic low-level lead absorption. \emph{The Lancet}, 305:708-712, 2012.}. One-hundred and twenty-four children living near a lead-emitting smelter in El Paso, Texas were studied for two years.  Various tests were used to assess neurological responses, including standing on one foot, tandem walking, alternate tapping, tapping with a stylus, visual reaction time, and auditory reaction time.  Wechsler intelligence tests were also administered.  The investigators compared results between children with high blood level concentration and matched `control' children with low blood level concentration.  The data set is \texttt{lead.sas7bdat}.
+\vskip10pt
+\begin{tabular}{r|l}
+\ttt{Id} & subject identifier\\
+\ttt{Area} & residence of the child in 1972: \\
+           &1 = 0-1 miles from smelter \\
+           &2 = 1-2.5 miles from smelter \\
+           &3 = 2.5-4 miles from smelter \\
+\ttt{Sex} & 1=male, 2=female\\
+\ttt{Iqv\textunderscore inf} & information subtest in WISC and WPPSI\\
+\ttt{Iqv\textunderscore comp} & comprehension subtest in WISC and WPPSI\\
+\ttt{Iqv\textunderscore ar} & arithmetic subtest in WISC and WPPSI\\
+\ttt{Iqv\textunderscore ds} & digit span subtest (WISC) and sentence completion (WPPSI)\\
+\ttt{Iqv\textunderscore raw} & raw score/verbal IQ (this is total of previous 4 {\tt iqv})\\
+\ttt{Iqp\textunderscore pc} & picture completion subtest in WISC and WPPSI\\
+\ttt{Iqp\textunderscore bd} & block design subtest in WISC and WPPSI\\
+\end{tabular}\\
+\newpage
+\begin{tabular}{r|l}
+\ttt{Iqp\textunderscore oa} & object assembly subtest (WISC), animal house subtest (WPPSI)\\
+\ttt{Iqp\textunderscore cod} & coding subtest (WISC), geometric design subtest (WPPSI) \\
+\ttt{Iqp\textunderscore raw} & raw score/performance IQ\\
+\ttt{HH\textunderscore index} & Hollingshead index of social status\\
+\ttt{Iqv} & verbal IQ\\
+\ttt{Iqp} & performance IQ \\
+\ttt{Iqf} & full scale IQ \\
+\ttt{Iq\textunderscore type} & 1=WISC, 2=WPPSI\\
+\ttt{Lead\textunderscore type} & 1=blood lead $<$40 mg/100mL in both 1972 and 1973\\
+                               & 2=blood lead $\ge$40 mg/100mL in both 1972 and 1973\\
+                               & 3=blood lead $\ge$40 mg/100mL in 1972 and $<$ 40 in 1973\\
+\ttt{Ld72} & blood lead levels (micrograms/100mL) in 1972\\
+\ttt{Ld73} & blood lead levels (micrograms/100mL) in 1973\\
+\ttt{Fst2yrs} & 1=child lived within 1 mile of smelter for $1^{st}$ two years, 2=child did not\\
+\ttt{Totyrs} & total number of years spent within 4.1 miles of smelter\\
+\ttt{Pica} & 1=yes, 2=no\\
+\ttt{Colic} & 1=yes, 2=no\\
+\ttt{Clumsi} & 1=yes, 2=no\\
+\ttt{Irrit} & 1=yes, 2=no\\
+\ttt{Convul} & 1=yes, 2=no\\
+\ttt{X2Plat\textunderscore r} & $\#$ of taps for right hand in the 2-plate tapping test ($\#$ of taps in one 10 second trial)\\
+\ttt{X2Plat\textunderscore l} & $\#$ of taps for left hand in the 2-plate tapping test ($\#$ of taps in one 10 second trial)\\
+\ttt{Visrea\textunderscore r} & visual reaction time right hand (milliseconds)\\
+\ttt{Visrea\textunderscore l} & visual reaction time left hand (milliseconds)\\
+\ttt{Audrea\textunderscore r} & auditory reaction time right hand (milliseconds)\\
+\ttt{Audrea\textunderscore l} & auditory reaction time left hand (milliseconds) \\
+\ttt{FWT\textunderscore r} & finger-wrist tapping test right hand ($\#$ of taps in one 10 second trial)\\
+\ttt{FWT\textunderscore l} & finger-wrist tapping test left hand ($\#$ of taps in one 10 second trial)\\
+\ttt{Hyperact} & Werry-Weiss-Peters scale for hyperactivitiy (as reported by parents), \\
+               & 0=no activity... 4=severely hyperactive\\
+\ttt{Group} & control = children whose blood-lead levels $<40$ in 1972 \\
+                  & lead = children whose blood-lead levels $\geq 40$ in 1972 \\
+\ttt{age\textunderscore years} & age in years (4.5 = 4 years, 6 months)\\
+\end{tabular}
+\vskip10pt
+\begin{enumerate}
+%\newpage
+\item Create a library reference called \texttt{mylib} to access the \texttt{lead} SAS data set.
+\item
+For each of the following scenarios, implement the appropriate statistical method.  In a comment in your SAS code, indicate (1) the method you chose, and (2) a brief interpretation of your results.  All tests may be done at the $\alpha=0.05$ level of significance.
+\begin{enumerate}
+\item Researchers would like to know if population average lead blood concentration changed between 1972 (\ttt{Ld72}) and 1973 (\ttt{Ld73}).
+\item The CDC recommends that ``safe'' limits for lead blood levels to be no more than 5 micrograms per 100 mL.  Did the population average in 1973 (\ttt{Ld73}) exceed this safe limit?
+\item Describe the strength of the association between verbal IQ (\ttt{Iqv}) and performance IQ (\ttt{Iqp}).
+\item Does population average left hand finger wrist tapping ability (\ttt{FWT\textunderscore l}) differ by whether or not children were in the lead or control group (\ttt{Group})?
+\end{enumerate}
+\item As you can see, there is a lot of data to analyze!
+\begin{enumerate}
+\item
+Create macro that can perform the two-sample t-test with the following four parameters:
+\bi
+\item \texttt{dsn} - data set name
+\item \texttt{quantvar} - the quantitative variable to analyze
+\item \texttt{catvar} - the categorical grouping variable
+\item \texttt{siglev} - the level of significance
+\item \texttt{plotoption} - this accompanies the \texttt{PLOTS} option and should take one of two values :
+\bi
+\item[] \ttt{all} - all two sample t-test plots produced
+\item[] \ttt{none} - no plots produced
+\ei
+\ei
+\item Your SAS output should have an informative title that displays information about the macro variables.
+\item Execute your macro for the following two scenarios to test it out:
+\bi
+\item At the 0.01 significance level, does population average full scale IQ (\ttt{Iqf}) differ by whether or not the children had pica (\ttt{Pica})?  Do \underline{not} produce any plots.
+\item At the 0.05 significance level, does population average visual reaction time in the left hand (\ttt{Visrea\textunderscore l}) differ by gender (\ttt{Sex})?  \underline{Do} produce plots.
+\ei
+\item Investigate the effects of lead poisoning on your own by choosing three quantitative variables of interest to you.  Execute your macro on these three variables with the categorical grouping variable of \underline{\ttt{Group}} to see if the lead and control groups have different characteristics.  In a comment in your SAS code, note which variable(s) has the strongest evidence of an association with \ttt{Group}.
+\item Return to the three executions of your macro in question 3d.  Export the output from these three macros into a single PDF file using the Output Delivery System.  Upload the pdf file to the Lab 11 assignment, in addition to your SAS code.
+\end{enumerate}
+%\item Extra credit: Modify your macro in question 2 to examine the sample sizes and produce a warning for small sample sizes.  More specifically,
+%\begin{enumerate}
+%    \item You should check the sample sizes of your categorical variable for \emph{non-missing} values of your quantitative variable.
+%    \item If either of the two sample sizes is less than 30, make your output have a subtitle with a warning about small sample size, that prints the values of the two sample sizes.
+%    \item Execute your macro for the two examples in question 2(c).  For the first example, my title looks like this:
+%    \item[] \ttt{Two sample t-test of Iqf by pica at alpha=0.01}
+%    \item[] \ttt{Warning: sample sizes of 11 and 113 may be too small for valid inference}
+%\end{enumerate}
+\end{enumerate}
+\end{document} 

@@ -1,0 +1,34 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+
+
+
+\begin{document}
+\hd{8}
+\labn{8}
+\vskip10pt
+\vskip10pt
+
+\ttt{Project Euler} (\url{https://projecteuler.net/}) presents a set of challenging problems that requires programming to solve.  This project is gaining in popularity and promise - job candidates are even listing on their resume how many \ttt{Project Euler} problems they have solved.  For this exercise, we  will examine \ttt{Problem \#19}: how many Sundays fell on the first of the month during the twentieth century (January 1, 1901 to December 31, 2000).
+\begin{enumerate}
+\item Discuss with your neighboring students a \emph{game plan} for solving this problem.  After a few minutes, students will be randomly selected to present their game plan to the class. Include your game plan as a comment in your SAS code.  \emph{(Hint: you will need to use SAS date functions!)}
+\item  Write SAS code to execute your game plan.  In your SAS code, create a new observation for each instance in which a Sunday fell on the first of the month such that you can see the date on which it occurs.  Print your results, and be sure to format your date values so that the dates are readable.  \emph{(So that you can verify your result: I got 171 Sundays, with the last instance being Oct 1, 2000.)}
+\end{enumerate}
+
+A local gym ran a New Year's promotional membership offer available to anyone who joined the gym on New Year's day.  As a result 245 people signed up for this offer.  Members were tracked automatically via the computer check-in as to when they arrived and left the gym. This data is contained in the SAS data set called \ttt{NewYears.sas7bdat}, which has the following variables:
+	\begin{itemize}
+		\item \ttt{id} - member id
+		\item \ttt{inday1-inday119} - check-in time, recorded in seconds since 12:00am, for the first 119 days of the year
+		\item \ttt{outday1-outday119} - check-out time, recorded in seconds since 12:00am, for the first 119 days of the year
+	\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Create a library reference called \texttt{mylib} to access the \ttt{NewYears.sas7bdat} data set.
+\item Create a temporary data set that copies the data from \ttt{NewYears.sas7bdat}.  Do the remaining items in this data set.
+\item Calculate the daily time (in minutes) each member spent at the gym, for each day.
+\item Calculate the average daily time (in minutes) each member spent at the gym.
+\item Apply PROC MEANS to you average daily time variable.  Your results should match those below.
+\item[] \includegraphics[trim=5cm 24cm 5cm 1.0cm,clip,width=0.7\textwidth]{q7.pdf}
+\end{enumerate}
+\end{document} 

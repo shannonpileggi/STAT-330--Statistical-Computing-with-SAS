@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{SAS libraries}{3}{0}{1}
+\beamer@sectionintoc {2}{PROC FREQ}{14}{0}{2}
+\beamer@sectionintoc {3}{PROC UNIVARIATE}{19}{0}{3}
+\beamer@sectionintoc {4}{Discussion}{23}{0}{4}
+\beamer@sectionintoc {5}{About the ADNI data}{26}{0}{5}

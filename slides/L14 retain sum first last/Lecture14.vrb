@@ -1,0 +1,26 @@
+\ft{Example 5 - save family level information}
+\bmp{0.55\textwidth}
+\footnotesize
+\begin{code}{.0}
+PROC SORT DATA = kids2 ;
+   \textcolor{OrangeRed}{BY famid ;}
+RUN ;
+
+DATA kids7 ;
+   SET kids2 ;
+   \textcolor{OrangeRed}{BY famid ;}
+   IF FIRST.famid THEN DO ;
+      totwt = 0 ;
+      num_kids = 0 ;
+   END ;
+   totwt + wt ;
+   num_kids + 1 ;
+   \textcolor{OrangeRed}{IF LAST.famid THEN OUTPUT;}
+   KEEP famid totwt num_kids;
+RUN;
+\end{code}
+\emp
+\bmp{0.05\textwidth} \hspace{0.05in} \emp
+\bmp{0.40\textwidth}
+\includegraphics[trim=7cm 21cm 7cm 1.5cm,clip,width=1.0\textwidth]{L14_famtotal.pdf}
+\emp

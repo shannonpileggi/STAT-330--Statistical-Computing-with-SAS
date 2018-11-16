@@ -1,0 +1,4 @@
+variable,N,MIN,MAX,MEAN,STD
+Age,1000,0,130,40.1,23.2
+Income,825,0,563,22.4,42.9
+HoursWk,505,1,99,37.1,14.3

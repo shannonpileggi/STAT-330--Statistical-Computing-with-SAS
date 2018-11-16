@@ -1,0 +1,27 @@
+\ft{Discussion}
+\bmp{0.45\textwidth}
+\footnotesize
+\begin{code}{.0}
+DATA example;
+   MERGE members (IN=a)
+         orders  (IN=b);
+    BY id;
+    \textcolor{OrangeRed}{IF \emph{condition};}
+RUN;
+\end{code}
+\emp
+\bmp{0.05\textwidth} \hspace{0.05in} \emp
+\bmp{0.45\textwidth}
+\begin{clicker}{Which \ttt{if} statement should you use keep members who haven't made a recent purchase?}
+\begin{enumerate}
+\item \ttt{if a;}
+\item \ttt{if b;}
+\item \ttt{if a and b;}
+\item \ttt{if a or b;}
+\item \ttt{if a and not b;}
+\item \ttt{if not a and b;}
+\item \ttt{if not (a and b);}
+\end{enumerate}
+\end{clicker}
+
+\emp

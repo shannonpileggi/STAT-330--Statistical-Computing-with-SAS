@@ -1,0 +1,71 @@
+
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+\begin{document}
+\hd{14}
+\labn{14}
+\vskip10pt
+\vskip10pt
+\begin{enumerate}
+\item Create a SAS library to access the \ttt{O2012.sas7bdat} data set.  This data set is about Olympic medalists from the 2012 Olympics.  Recall that this data set starts with an ``oh'' and not a ``zero''.
+\item Write a couple of SAS procedures to help you familiarize yourself with the data and summarize  the data.  How many observations are there?  What does an observation represent?  Note your findings as a comment in your SAS code.
+\item Create a new, temporary data set that sorts the olympics data by participating countries.
+\item Create a second new, temporary data set.  In this data set, create the following variables.  It may be helpful if you create them in the chunks presented below, then carefully check your data to make sure the variables were created correctly.
+\begin{enumerate}
+\item medal variables
+\item[] \ttt{num\text\_medalists} - total number of medalists for each country
+\item[] \ttt{num\_gold} - total number of gold medals for each country
+\item[] \ttt{num\_silver} - total number of silver medals for each country
+\item[] \ttt{num\_bronze} - total number of bronze medals for each country
+\item[] \ttt{num\_total} - total number of medals (gold, silver, and bronze) for each country
+\item functions of medals
+\item[] \ttt{ave\_medals} - total number of medals divided by total number of medalists for each country (represents average medals earned per medalist)
+\item[] \ttt{max\_medals} - maximum number of total medals earned by an \emph{individual} athlete for each country
+\item athlete variables
+\item[] \ttt{ave\_age}  - average age of all medalists for each country
+\item[] \ttt{ave\_wt}  - average weight of all medalists for each country
+\item[] \ttt{ave\_ht} -  average height of all medalists for each country
+\item[] \ttt{prop\_m}  - proportion of all medalists that are male for each country
+\end{enumerate}
+\item Carefully examine the \ttt{ave\_medals} variable.
+\begin{enumerate}
+\item In a comment in your SAS code, explain why it doesn't make sense for a country to have a \ttt{ave\_medals} less than one.
+\item Identify the three countries that have \ttt{ave\_medals} less than one.  Note your results in a comment in your SAS code.
+\item Print the \ttt{country}, \ttt{name}, \ttt{total}, \ttt{num\_total}, \ttt{num\_medalists} and \ttt{ave\_medals} variables  for these three countries.  Explain how they ended up having a \ttt{ave\_medals} less than one.  Note your findings in a comment in your SAS code. \emph{Note: you do not need to fix or create a cleaned version of this variable.}
+\end{enumerate}
+\item Similarly to the  \ttt{ave\_medals} variable, the \ttt{ave\_wt} variable was also incorrectly calculated.
+\begin{enumerate}
+\item Use a SAS procedure to identify the six \emph{sports} in which athletes have missing values for weights.  Note your findings as a comment in your SAS code.
+\item Use a SAS procedure to identify which sport has the largest number of missing values for weight.  Note your findings as a comment in your SAS code.
+\item Go back to your data step from question 4 and create a new variable that represents the total number of medalists without missing weight values (\ttt{num\_nomisswt}).
+\item Calculate a corrected average weight of the athletes for each country (ave\_wt\_fixed) using the new variable from (b).
+\item[]\emph{Note: Other variables that have missing values were also calculated incorrectly.  You are not required to fix these other variables.}
+\end{enumerate}
+\item
+Create country level information.
+\begin{enumerate}
+\item  Create a third temporary data set that only has one observation per country.  This data set should only have the variable \ttt{country} and the variables that you created in questions 4 and 6.
+\item Print your data using an option such that a maximum of two decimal places are displayed in the output.  So that you may check your work, a print out for the first 15 countries is provided on the next page (note the output is \emph{wrapping} due to the number of variables).
+\end{enumerate}
+%\item[]
+%\bmp{1.0\textwidth}
+%\footnotesize
+%\begin{craw}{.0}{Values from final data set}
+%                         num_    num_        max_          ave_wt_
+%   Obs Country        medalists total ratio medals ave_age  fixed  prop_m
+%
+%     1 Australia          25      32   1.28    4    24.44   73.16   0.24
+%     2 Azerbaijan          1       1   1.00    1    18.00   56.00   1.00
+%     3 Belarus             4       4   1.00    1    29.50   68.25   0.25
+%     4 Belgium             2       2   1.00    1    26.00   61.00   0.50
+%     5 Brazil              5       5   1.00    1    23.40   81.60   0.60
+%     6 Canada             25      25   1.00    1    28.24   77.76   0.44
+%     7 Colombia            3       3   1.00    1    26.67   64.67   0.67
+%     8 Croatia             4       4   1.00    1    23.50   94.00   1.00
+%     9 Cuba                5       5   1.00    1    26.40   78.00   0.60
+%    10 Czech Republic      2       2   1.00    1    27.00   85.50   1.00
+%\end{craw}
+%\emp
+\end{enumerate}
+\hspace*{-0.3in}\includegraphics[width=1.0\textwidth]{q7.pdf}
+\end{document} 

@@ -1,0 +1,49 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+\begin{document}
+\hd{17}
+\labn{17}
+\vskip10pt
+
+\noindent Use the 2012 Olympic Medalists data set \ttt{O2012.sas7bdat} for the following exercises (this data set name starts with an ``oh'' and not a zero).  \textbf{\emph{Example} output is provided on the last pages.}
+\begin{enumerate}
+\item Create a SAS library to access the \ttt{O2012.sas7bdat}.
+\item While for certain sports athletes peak at younger ages, in some sports there is more variability in the age of athletes.  Using \ttt{PROC SQL}, create a summary of the olympics data by sport that
+\begin{enumerate}
+\item displays the sport name
+\item displays the number of medalists that participated in each sport
+\item displays the standard deviation of athlete's age for each sport
+\item is sorted by standard deviation in descending order
+\end{enumerate}
+Which sport has the largest variability in age?  Note your findings in a comment in your SAS code.
+\item Suppose all Olympic medalists of the same country are traveling together and need to get on an elevator that has a 2000kg weight limit.  Which countries could fit all of their medalists on this elevator?  Using \ttt{PROC SQL}, create a summary of the olympics data by country that
+\begin{enumerate}
+\item displays the country name
+\item displays the number of medalists for each country
+\item sums the total weight of all medalists per country
+\item creates a new variable called \ttt{elevator} which has a value of ``yes'' if the total weight is less than or equal to 2000, and ``no'' otherwise; make sure that countries with a missing value for total weight also have a missing value for \ttt{elevator}
+\item is sorted by total weight in descending order
+\end{enumerate}
+In examining the output, how many countries wouldn't be able to put all of their medalists on the elevator because of the weight limit?  Note your findings in a comment in your SAS code.
+\item Using \ttt{PROC SQL}, re-create the table from the previous two labs where you summarized the olympics data by country.  Display the following variables:
+\begin{enumerate}
+\item country
+\item number of medalists in each country 
+\item total number of medals won in each country 
+\item average number of medals won per athlete in each country
+\item maximum number of medals won per athlete in each country
+\item average age of medalists in each country
+\item average weight of medalists in each country
+\item percent of medalists that are female in each country
+\item percent of medalists that are male in each country
+\end{enumerate}
+\item[]
+\emph{Hint:} For the last two variables regarding the percent of males and the percent of females, use a \ttt{CASE} statement within a \ttt{SUM} expression such as
+\item[] \fbox{\ttt{SUM(CASE WHEN \emph{condition} THEN \emph{value1} ELSE \emph{value2} END) AS \emph{newvariable} }}
+\end{enumerate}
+\newpage
+\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=1.0\textwidth]{Q2.pdf}
+\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=1.0\textwidth]{Q3.pdf}
+\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=1.0\textwidth]{Q4.pdf}
+
+\end{document} 

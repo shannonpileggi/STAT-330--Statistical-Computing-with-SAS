@@ -1,0 +1,14 @@
+\ft{PROC REG model selection}
+Another \emph{option} for the \ttt{MODEL} statement in \ttt{PROC REG} allows you to do automated model selection.  There are 9 model selection methods available.
+\vskip5pt
+\bmp{1.0\textwidth}
+\footnotesize
+\begin{code}{.0}
+PROC REG DATA = flash.cars ;
+  MODEL price = mileage liter sound leather /
+     \textcolor{OrangeRed}{SELECTION = RSQUARE} ;
+QUIT ;
+\end{code}
+\emp
+\vskip5pt
+This example uses the R-squared method to examine all possible models based on the 4 independent variables.

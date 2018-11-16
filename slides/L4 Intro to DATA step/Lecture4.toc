@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Creating variables}{3}{0}{1}
+\beamer@sectionintoc {2}{IF/THEN/ELSE}{10}{0}{2}
+\beamer@sectionintoc {3}{DROP / KEEP variables}{19}{0}{3}
+\beamer@sectionintoc {4}{Subsetting observations}{23}{0}{4}

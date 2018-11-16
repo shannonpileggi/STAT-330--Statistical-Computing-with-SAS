@@ -1,0 +1,13 @@
+\frametitle{Example: change destination}
+\bmp{1.05\textwidth}
+\footnotesize
+\begin{code}{.0}
+\textcolor{OrangeRed}{ODS PDF FILE = "&dir.L11_correlation.pdf" STYLE = HTMLBlue ;}
+\textcolor{OrangeRed}{OPTIONS NODATE NONUMBER ;}
+PROC CORR DATA = flash.BtheB PLOTS = matrix ;
+	VAR bdi_pre ;
+	WITH bdi_2m bdi_4m bdi_6m bdi_8m ;
+RUN ;
+\textcolor{OrangeRed}{ODS PDF CLOSE ;}
+\end{code}
+\emp

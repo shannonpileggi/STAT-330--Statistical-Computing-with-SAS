@@ -1,0 +1,230 @@
+genderN,mathN,PreHealthN,transferN,PrevStatsN,ReasonN,id
+Female,OK,No,other,No,Other,B141FB
+Female,OK,"yes, other",traditional,No,required,B14AE9
+Male,good,"yes, med sch",traditional,"Yes, well",Other,B14AEE
+Female,good,"yes, other",traditional,No,Other,B0B86F
+Male,bad,No,traditional,"Yes, OK",required,8513F8
+Male,good,No,traditional,No,Other,B1196D
+Female,OK,"yes, other",traditional,No,Other,B1586B
+Male,OK,No,traditional,"Yes, OK",Other,8513D8
+Female,OK,"yes, other",traditional,No,GER,AD50CA
+Male,good,"yes, med sch",traditional,"Yes, OK",Other,B3A089
+Female,OK,"yes, other",traditional,No,Other,AFAC94
+Female,good,"yes, other",other,"Yes, OK",Other,85203F
+Female,good,"yes, med sch",traditional,No,Other,AFF607
+Male,good,"yes, med sch",traditional,No,Other,B3A10F
+Female,good,No,traditional,"Yes, OK",required,B15582
+Male,good,No,traditional,"Yes, OK",required,B14921
+Female,bad,No,traditional,No,Other,85119F
+Male,good,No,Oxford,"Yes, well",Other,B13985
+Male,good,"yes, other",traditional,No,Other,B0B86A
+,OK,No,traditional,"Yes, OK",required,B13F64
+Female,OK,"yes, other",traditional,No,required,851DEF
+Male,OK,No,traditional,"Yes, poor",required,B14ABC
+Male,OK,"yes, other",traditional,"Yes, OK",required,851179
+Male,good,"yes, med sch",traditional,No,Other,B0C670
+Male,good,No,traditional,"Yes, well",Other,B3A07C
+Female,OK,"yes, med sch",Oxford,No,required,8824D0
+Male,OK,"yes, other",traditional,No,Other,882E49
+Female,good,No,traditional,No,Other,AFEF47
+Female,good,No,traditional,"Yes, well",Other,B00213
+Female,OK,"yes, med sch",traditional,"Yes, well",required,B1491A
+Male,OK,"yes, med sch",traditional,No,Other,AFEF76
+Female,good,"yes, med sch",traditional,"Yes, well",Other,B1201B
+Male,good,"yes, med sch",traditional,"Yes, well",required,B4F648
+Female,good,"yes, med sch",traditional,"Yes, well",required,B14201
+Female,OK,"yes, med sch",traditional,No,Other,B15A16
+Female,good,"yes, other",traditional,No,required,8518DE
+Female,OK,No,traditional,"Yes, well",GER,852269
+Female,OK,"yes, med sch",traditional,No,Other,AFEF0D
+Female,good,"yes, med sch",Oxford,No,required,851427
+Female,OK,"yes, med sch",traditional,"Yes, OK",required,B14954
+Female,good,"yes, med sch",traditional,"Yes, OK",required,B0B88C
+Female,bad,No,traditional,No,required,B3D2E4
+Male,OK,"yes, med sch",traditional,"Yes, OK",Other,B3A130
+Female,OK,"yes, other",traditional,No,required,B4F756
+Female,good,"yes, med sch",traditional,No,required,B160D1
+Female,OK,No,traditional,"Yes, well",required,B4F6FD
+Male,OK,"yes, med sch",traditional,No,required,B12291
+Female,good,"yes, med sch",Oxford,No,Other,AFF646
+Female,OK,"yes, med sch",traditional,No,required,B3B85A
+Female,OK,"yes, other",Oxford,"Yes, poor",required,8543B4
+Female,bad,No,Oxford,No,required,B385C1
+Female,good,"yes, other",traditional,No,required,B2A071
+Female,OK,No,traditional,No,required,B2E747
+Female,good,No,traditional,"Yes, well",Other,882918
+Female,OK,"yes, other",traditional,"Yes, OK",required,B2C2A5
+Male,OK,No,Oxford,"Yes, OK",required,AFF61A
+Male,OK,No,Oxford,"Yes, well",Other,8519D3
+Female,bad,"yes, other",traditional,No,required,AFEEE7
+Female,OK,No,traditional,"Yes, OK",required,B00234
+Female,OK,No,traditional,No,required,B14CD1
+Female,good,"yes, med sch",traditional,No,required,B15A41
+Male,good,"yes, med sch",traditional,"Yes, OK",Other,8513C8
+Male,bad,No,traditional,"Yes, OK",required,8511A3
+Female,good,No,traditional,No,required,883F0F
+Female,OK,No,traditional,"Yes, OK",Other,B14CC7
+Female,OK,"yes, med sch",traditional,No,required,B3B4BD
+,OK,No,traditional,No,required,B37E1B
+Female,good,"yes, other",traditional,No,Other,B15584
+Male,good,"yes, med sch",traditional,"Yes, well",required,852389
+Female,bad,"yes, med sch",Oxford,"Yes, OK",required,B4F733
+Male,good,"yes, med sch",traditional,"Yes, well",required,8512CE
+Female,bad,No,traditional,No,required,B3B6C7
+Female,good,"yes, med sch",traditional,No,required,852155
+Male,good,"yes, med sch",traditional,"Yes, well",required,851D9E
+Female,good,"yes, med sch",traditional,No,required,851EAA
+Female,OK,No,traditional,No,required,B4F71D
+Female,OK,No,traditional,"Yes, OK",required,8511F1
+Female,good,"yes, med sch",traditional,No,required,B4F760
+Male,OK,No,traditional,No,required,85225D
+Female,OK,"yes, other",traditional,No,required,85239C
+Female,OK,"yes, other",traditional,No,required,851716
+Female,good,No,traditional,No,required,85250C
+Female,OK,No,traditional,No,required,8510A5
+Male,good,"yes, med sch",traditional,No,required,850DA6
+Male,good,"yes, other",traditional,No,Other,85199E
+Male,OK,"yes, med sch",traditional,No,required,B2C542
+Male,good,"yes, med sch",traditional,No,required,851DE3
+Male,bad,No,traditional,"Yes, OK",required,883EB1
+Female,OK,"yes, med sch",traditional,"Yes, OK",required,85200C
+Female,good,"yes, other",traditional,"Yes, well",required,851076
+Female,good,"yes, med sch",traditional,"Yes, well",required,AFF62D
+Male,good,"yes, med sch",traditional,"Yes, well",Other,8513F9
+Male,good,No,traditional,No,required,B2E71A
+Male,OK,"yes, other",traditional,"Yes, OK",required,B2C2A2
+Female,OK,No,traditional,"Yes, OK",required,B15F6F
+Female,OK,No,traditional,"Yes, well",required,8511A5
+Female,good,"yes, med sch",traditional,"Yes, well",required,B4F708
+Female,OK,"yes, other",traditional,No,required,B3A0FE
+Male,bad,No,traditional,"Yes, well",required,B2BDD4
+Male,good,No,traditional,"Yes, well",required,B2BDB7
+Female,good,No,traditional,No,required,B37B78
+Female,OK,No,traditional,"Yes, well",required,B37B90
+Male,good,No,traditional,"Yes, OK",required,B2C256
+Male,good,"yes, med sch",traditional,No,Other,B141FC
+Female,bad,No,traditional,"Yes, well",required,8828CE
+Female,OK,No,traditional,No,required,B14925
+Male,OK,No,traditional,"Yes, well",required,851E49
+Female,OK,"yes, med sch",traditional,"Yes, well",Other,B2E722
+Female,good,No,traditional,No,GER,8524DE
+Male,good,"yes, med sch",traditional,"Yes, OK",required,851C1F
+Female,OK,"yes, other",traditional,No,required,B1516C
+Female,OK,"yes, med sch",traditional,"Yes, poor",required,852014
+Female,OK,"yes, other",traditional,No,required,B4F6DE
+Female,good,"yes, other",traditional,No,required,B4F66B
+Male,good,"yes, med sch",other,No,required,88320C
+Female,good,No,traditional,No,required,851B08
+Female,good,"yes, med sch",traditional,No,Other,8512C9
+Female,good,No,traditional,"Yes, OK",required,85171B
+Female,OK,"yes, other",traditional,No,required,851439
+Female,good,No,traditional,"Yes, OK",required,85154A
+Female,OK,"yes, med sch",traditional,No,required,B2BDE0
+Female,OK,No,traditional,"Yes, OK",required,8518EA
+Male,OK,"yes, other",traditional,No,required,B13353
+Male,good,No,Oxford,"Yes, well",Other,B14C8E
+Female,bad,"yes, med sch",traditional,"Yes, poor",required,B13343
+Male,OK,"yes, med sch",traditional,No,required,B2BDB5
+Female,OK,"yes, med sch",traditional,No,required,B1EDD8
+Male,good,"yes, med sch",traditional,No,required,B4F744
+Female,OK,No,traditional,No,required,852158
+Female,good,"yes, med sch",traditional,No,required,851521
+Male,good,"yes, med sch",traditional,No,required,B1516F
+Male,good,"yes, med sch",traditional,"Yes, well",required,B2C2B7
+Female,OK,"yes, other",traditional,No,required,B4F68C
+Male,OK,"yes, med sch",traditional,No,required,B2A06B
+Female,OK,No,traditional,"Yes, OK",Other,B37E13
+Female,OK,"yes, other",traditional,"Yes, OK",required,B3B882
+Female,bad,No,traditional,No,required,B08339
+Male,OK,"yes, med sch",traditional,"Yes, poor",required,B38EE6
+Male,OK,No,other,"Yes, well",GER,B2C545
+Female,bad,"yes, other",traditional,No,GER,851EB0
+Female,good,"yes, other",traditional,No,required,851DFC
+Female,good,"yes, med sch",traditional,"Yes, well",required,851C17
+Female,OK,No,traditional,No,required,B37B0B
+Male,good,"yes, other",traditional,"Yes, OK",required,B385FD
+Female,OK,"yes, med sch",traditional,No,required,AFF638
+Female,OK,"yes, other",traditional,No,required,851C29
+Female,good,"yes, med sch",traditional,No,required,85188F
+Female,OK,"yes, med sch",traditional,No,required,85488C
+Female,OK,"yes, other",traditional,No,required,85118E
+Male,good,No,traditional,No,required,850BC2
+Female,good,"yes, med sch",traditional,No,required,8508BA
+Male,good,"yes, med sch",traditional,"Yes, well",required,852040
+Female,good,No,traditional,No,required,851CA5
+Male,good,"yes, med sch",traditional,No,required,851F66
+Female,good,"yes, med sch",traditional,No,required,851DEB
+Female,OK,"yes, med sch",traditional,No,required,85231E
+Female,OK,"yes, other",traditional,No,GER,8513DD
+Female,good,"yes, other",traditional,No,required,B00230
+Female,OK,"yes, med sch",traditional,"Yes, OK",GER,8828CB
+Female,OK,"yes, other",traditional,No,required,8549B6
+Female,good,"yes, med sch",traditional,No,required,851CB0
+Female,OK,"yes, other",traditional,"Yes, OK",required,B7CB43
+Female,good,"yes, med sch",traditional,"Yes, well",required,85073F
+Female,OK,"yes, med sch",traditional,No,Other,851C16
+Male,good,"yes, med sch",traditional,"Yes, well",required,85231D
+Male,good,No,traditional,"Yes, well",required,85200A
+Female,good,"yes, med sch",traditional,"Yes, well",required,851F18
+Male,OK,"yes, med sch",traditional,No,required,85189D
+Male,good,"yes, other",traditional,"Yes, OK",Other,851B67
+Male,good,No,traditional,No,required,851B61
+Female,good,"yes, med sch",traditional,No,required,851B8D
+Female,good,No,traditional,No,required,8519C8
+Male,good,"yes, med sch",traditional,"Yes, OK",required,85152D
+Female,OK,"yes, other",traditional,No,required,852399
+Male,good,No,traditional,"Yes, well",required,85106B
+Female,OK,No,traditional,No,required,85171C
+Female,good,No,traditional,No,required,85204E
+Female,OK,"yes, other",traditional,No,required,851882
+Female,good,"yes, med sch",traditional,No,required,851143
+Female,good,"yes, med sch",traditional,No,required,851E55
+Female,good,No,traditional,"Yes, well",Other,8514FC
+Female,bad,"yes, other",traditional,No,required,851877
+Female,OK,No,traditional,No,required,850764
+Female,OK,"yes, med sch",traditional,No,required,852504
+Female,OK,No,traditional,"Yes, OK",required,852173
+Female,good,"yes, med sch",traditional,"Yes, well",required,851E9E
+,OK,"yes, med sch",traditional,No,required,850D9A
+Male,OK,No,traditional,No,Other,851DEA
+Female,good,"yes, other",traditional,"Yes, well",required,851221
+Female,good,"yes, med sch",traditional,No,required,B2C276
+Female,OK,No,traditional,"Yes, well",Other,851892
+Female,good,"yes, med sch",traditional,"Yes, OK",required,8524F6
+Male,OK,"yes, med sch",traditional,No,GER,851F1F
+Male,good,No,traditional,No,required,851A67
+Female,OK,"yes, med sch",traditional,No,required,85237D
+Female,bad,"yes, med sch",traditional,No,required,85150B
+Female,good,"yes, other",traditional,No,required,851CD0
+Female,good,"yes, med sch",traditional,No,required,852508
+Female,good,"yes, other",traditional,"Yes, well",required,852003
+Female,good,"yes, med sch",traditional,No,required,851C74
+Male,OK,No,traditional,"Yes, poor",Other,851F1C
+Female,OK,No,traditional,No,required,851C14
+Female,OK,No,traditional,"Yes, OK",required,8514FD
+Male,good,"yes, med sch",traditional,No,required,851AFF
+Male,OK,"yes, med sch",traditional,No,required,851AF3
+Female,OK,"yes, other",traditional,No,required,851EBA
+Female,bad,"yes, other",traditional,No,required,852392
+Male,OK,No,traditional,No,required,8513EA
+Female,good,No,traditional,"Yes, well",required,851087
+Female,OK,No,traditional,"Yes, OK",GER,852524
+Male,good,"yes, med sch",traditional,"Yes, well",required,8524F0
+Female,good,No,traditional,No,required,854888
+Female,good,No,traditional,"Yes, well",Other,851425
+Female,good,No,traditional,No,required,8549BB
+Female,good,"yes, med sch",traditional,No,required,8534D2
+Female,good,No,traditional,No,required,852484
+Female,OK,No,traditional,No,required,B37AEA
+Female,OK,No,traditional,"Yes, OK",required,85235F
+Male,good,"yes, med sch",traditional,"Yes, well",required,851FEE
+Female,good,"yes, other",traditional,"Yes, well",required,8511F4
+Female,OK,No,traditional,No,GER,8829FD
+Female,good,"yes, med sch",traditional,No,required,OF9CC5
+Female,OK,"yes, other",traditional,No,required,851F91
+Female,good,"yes, med sch",traditional,"Yes, well",Other,852480
+Female,good,"yes, other",traditional,"Yes, well",GER,852396
+Female,good,"yes, other",traditional,"Yes, well",required,851436
+Female,OK,No,other,No,required,B11FF4
+Male,bad,No,other,No,required,B14912
+Female,OK,"yes, med sch",traditional,No,required,85139A

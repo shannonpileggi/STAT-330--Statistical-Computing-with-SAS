@@ -1,0 +1,6 @@
+Rome      3  750 7 4 M, 3 G          D'Amico  Torres
+Paris     8 1680 6 5 M, 1 other      Lucas    Lucas
+London    6 1230 5 3 M, 2 G          Wilson   Lucas
+New York  6    . 8 5 M, 1 G, 2 other Lucas    D'Amico
+Madrid    3  370 5 3 M, 2 other      Torres   D'Amico
+Amsterdam 4  580 6 3 M, 3 G                   Vandever

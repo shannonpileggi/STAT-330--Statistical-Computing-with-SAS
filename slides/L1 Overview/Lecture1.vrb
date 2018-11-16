@@ -1,0 +1,19 @@
+\fto
+Copy this code into the SAS editor and identify the 3 errors.
+\bmp{0.7\textwidth}
+\footnotesize
+\begin{code}{.0}
+DAT grades;
+   INPUT name $ exam1 exam2 exam3;
+   DATALINES;
+   Shannon      96    82    83
+   Lex          92    81    68
+   Becky        92    75    73
+   ;
+RUN
+
+PROC PRINT DATA = grade;
+RUN;
+
+\end{code}
+\emp

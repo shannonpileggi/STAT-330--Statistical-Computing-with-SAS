@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{List and Column Input}{3}{0}{1}
+\beamer@sectionintoc {2}{Formatted Input}{13}{0}{2}
+\beamer@sectionintoc {3}{More on moving the pointer}{24}{0}{3}
+\beamer@sectionintoc {4}{INFILE}{34}{0}{4}

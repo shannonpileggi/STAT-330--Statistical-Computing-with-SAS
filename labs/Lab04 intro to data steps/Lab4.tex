@@ -1,0 +1,89 @@
+
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+
+
+
+\begin{document}
+\hd{4}
+\labn{4}
+\vskip10pt
+This data set comes from a STAT 217 course survey.  Questions marked with MC indicates it was a multiple choice question.  All other questions were free response.
+\vskip5pt
+\ttt{Stat217Survey.csv}:\\
+\vskip5pt
+\begin{tabular}{r|l}
+\ttt{Q02} &   	MC: What year are you? \\
+\ttt{Q03a} & 	MC: Have you taken a statistics course previously? Mark all that apply. \\
+           & \emph{This is my first statistics course.} 1 = yes, 0 = no \\
+\ttt{Q03b} &	MC: Have you taken a statistics course previously? Mark all that apply. \\
+           & \emph{I took AP Statistics in high school.} 1 = yes, 0 = no \\
+\ttt{Q03c} & 	MC: Have you taken a statistics course previously? Mark all that apply. \\
+           & \emph{I have previously taken STAT 130 at Cal Poly.}  1 = yes, 0 = no \\
+\ttt{Q03d} &	MC: Have you taken a statistics course previously? Mark all that apply. \\
+           & \emph{I have previously taken STAT 217 at Cal Poly.} 1 = yes, 0 = no \\
+\ttt{Q03e} &	MC: Have you taken a statistics course previously? Mark all that apply. \\
+           & \emph{I have taken some other statistics course.} 1 = yes, 0 = no \\
+\ttt{Q04} &  	What is your GPA? (If this happens to be your first quarter, \\
+          & and you don't yet have a GPA, enter 9.99). \\
+\ttt{Q05} & 	MC: Do you consider yourself to be tech-savvy and handy with your computer? \\
+\ttt{Q06} & 	MC: Do you own a laptop? \\
+\ttt{Q07} &	    MC: What is your targeted grade in this course? \\
+\ttt{Q08} &	    MC: What kind of note taker are you? \\
+\ttt{Q09} &		Please tell me something about yourself.  This can be involvement in extracurricular  \\
+          &     activities, interests outside of school, or something unique about yourself. \\
+\ttt{Q10} &		To the nearest inch, how tall are you?  (I am 5 feet 4 inches, so I would enter 64.)  \\
+\ttt{Q11} &		MC: What is your gender pronoun? \\
+\ttt{Q12} &		How much money did you spend on your last haircut (including tip)? \\
+          &     (Enter the dollar amount without the dollar sign.) \\
+\ttt{Q13} &		How many siblings do you have? \\
+\ttt{Q14} &		What is the length in months of your longest serious relationship? \\
+\ttt{Q15} &		MC: Are you currently in a serious relationship? \\
+\ttt{Q16} &		MC: Was Cal Poly your first choice?  \\
+\end{tabular}
+\begin{tabular}{r|l}
+\ttt{Q17} &		How many colleges did you apply to? \\
+\ttt{Q18} &		About how many text messages do you send in a day? \\
+\ttt{Q19} &		MC: Rate your opinion on the value of statistics in society on a numerical scale \\
+          &     of 1 (completely useless) to 9 (incredibly important). \\
+\end{tabular}
+
+\vskip10pt
+
+\begin{enumerate}
+\item Create a SAS library reference called \texttt{flash} that points a location on your flash drive or computer where you want to save your SAS data set.
+\item Identify the \ttt{Stat217Survey.csv} file from either PolyLearn or the shared drive.  Save the file to a location on your computer or your flash drive.
+\item Import the \ttt{Stat217Survey.csv} to a temporary SAS data set named  \ttt{work.survey}.  \emph{Hint: Use GUESSINGROWS = 35 to be able to read in the data set without error.} Apply the CONTENTS procedure to \ttt{work.survey} to get an overview of the data set, with the variables listed in order of appearance rather than alphabetical.  Lastly, apply the PRINT procedure so that you can review the data.
+\end{enumerate}
+\textbf{For the remaining items:}  All DATA step operations should be completed in \textbf{ONE} DATA step.  You should contribute pieces of code in small chunks, verify that it worked correctly, and then continue to add more to the DATA step.  Some items may require a PROC to verify output.  Please include the PROCs sequentially after your DATA step, commented with the corresponding question number and objective.  (The first PROC after the data step should correspond to question 5, the last PROC in your program should correspond to question 16.)
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item Create a permanent SAS data set called \ttt{survey} in your \ttt{flash} library.  This data set should be a copy of the \ttt{work.survey} data set.
+\item \emph{Under the data step, using your permanent SAS data set:} Using the procedure of your choice, identify any unusual values of GPA.  Explain why this(these) values are present.  Again, using the procedure of your choice, identify how many students submitted this(these) value(s) and note your findings as a comment in your SAS code.
+\item \emph{In your data step:} Create a new variable called \texttt{GPA\_clean} that is a copy of the GPA variable.  Re-code the unusual values that you identified in the previous question to missing.
+\item \emph{Under the data step, using your permanent SAS data set:} Apply PROC MEANS to the \texttt{GPA\_clean} variable to verify that the re-coding worked correctly.  Your output should match the output shown below.
+\item[]\includegraphics[trim={4cm 23cm 4cm 0.5cm},clip]{q7.pdf}
+\item \emph{In your data step:} There are a series of question 3 items that corresponded to a single ``Mark all that apply'' type question.  Utilize these responses to create a new variable called \texttt{prev\_stats} which has a value of \texttt{yes} if students have previous experience with statistics and a value of \texttt{no} if the student does not have previous experience with statistics.  \emph{Hint: it may be helpful to discuss a `game plan' with neighboring students or the instructor prior to coding.}
+\item \emph{Under the data step, using your permanent SAS data set:} Apply PROC FREQ to the \texttt{prev\_stats} variable to determine how many students had previous experience with statistics.  Your output should match the output shown below.
+\item[]\includegraphics[trim={4cm 23cm 4cm 0.5cm},clip]{q9.pdf}
+\item  \emph{Under the data step, using your permanent SAS data set:}  Utilize a procedure that summarizes all of the values regarding year at Cal Poly.
+\item \emph{In your data step:}  Create a new variable called \texttt{class} that classifies students as ``lower'' class (first years and second years) and ``upper'' class (third years, fourth years, etc.).
+\item  \emph{Under the data step, using your permanent SAS data set:}  Apply PROC FREQ to the \texttt{class} variable to determine how many lower and upper class students are enrolled.  Your output should match the output shown below.
+    \item[]\includegraphics[trim={4cm 23cm 4cm 0.5cm},clip]{q11.pdf}
+\item \emph{In your data step:}  According to the registrar's office, graduation with honors are awarded as follows:
+\begin{itemize}
+\item \emph{Summa cum laude:} cumulative Cal Poly GPA of 3.85 or higher
+\item \emph{Magna cum laude:} cumulative Cal Poly GPA of 3.70 to 3.84
+\item \emph{Cum laude:} cumulative Cal Poly GPA of 3.50 to 3.69
+\end{itemize}
+Use the \texttt{GPA\_clean} variable to create a new variable called \texttt{honors} that classifies students according to their current GPA; students who do not yet achieve honors should be classified as ``none''.  Students with a missing value for \texttt{GPA\_clean} should also have a missing value for \texttt{honors}.
+\item \emph{Under the data step, using your permanent SAS data set:}  Apply PROC FREQ to the \texttt{honors} variable to determine the distribution of honors.  Your output should match the output shown below.
+\item[]\includegraphics[trim={4cm 21cm 4cm 0.5cm},clip]{q14.pdf}
+\item When I ask students to tell me something about themselves, many say that they enjoy the outdoors.  Identify a SAS function that can look for phrases in a character string.  Use this function to create a new variable called \texttt{outdoors} which should have a value of ``yes'' if their statement includes the word ``outdoors'' and a value of ``no'' otherwise.
+\item \emph{Under the data step, using your permanent SAS data set:}  Apply PROC FREQ to the \texttt{outdoors} variable to determine how many students mentioned the outdoors in their statement.  Your output should match the output shown below.
+\item[]\includegraphics[trim={4cm 22cm 4cm 0.5cm},clip]{q16.pdf}
+\item \emph{After your last PROC:} Create a new, temporary SAS data set called \texttt{shortlist} that contains only the five students with honors and only two variables: honors and how they take notes.  Apply a PROC PRINT to this data set to view it.  Your output should match the output shown below.
+\item[]\includegraphics[trim={4cm 22cm 4cm 0.5cm},clip]{q17.pdf}
+\end{enumerate}
+
+\end{document} 

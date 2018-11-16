@@ -1,0 +1,379 @@
+\documentclass[letterpaper,12pt]{report}
+
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath}
+\usepackage{epigraph,fancyvrb,eqparbox}
+%\usepackage[multiple]{footmisc}
+%\usepackage{menukeys}
+\usepackage{url}
+\usepackage[colorlinks = true, linkcolor = blue, urlcolor = blue]{hyperref}
+\usepackage{setspace}
+%\usepackage{fancyhdr}
+\usepackage{enumerate}
+
+\usepackage[margin=0.75in]{geometry}
+
+%\usepackage{cellspace}
+%\setlength\cellspacetoplimit{5pt}
+%\setlength\cellspacebottomlimit{5pt}
+
+\setlength{\parindent}{0cm}
+
+%\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+%\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+
+%\lhead{STAT 217: Introduction to }
+\begin{document}
+
+\begin{center}
+\large{\textsc{STAT 330: Statistical Computing with SAS}}\\
+California Polytechnic State University, San Luis Obispo\\
+Fall 2017\\
+\end{center}
+\vskip10pt
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{llllll}
+\hline
+\textbf{Instructor:} & Shannon Pileggi       &&& \textbf{Office:} & 25-109 \\
+\textbf{Email:}      & spileggi@calpoly.edu  &&& \textbf{Phone:} & 756-2946 \\
+\hline
+\end{tabular}}
+\end{center}
+
+\vskip15pt
+
+\textbf{Class meetings}
+\begin{itemize}
+\item[]
+\begin{tabular}{llll}
+\emph{Section}       & \emph{Time}       & \emph{Days} &  \emph{Location} \\
+ 70 & 2:10-4:00  & TR & 38-123A \\
+ 71 & 4:10-6:00  & TR & 38-123A \\
+\end{tabular}
+\item[]
+\end{itemize}
+
+\textbf{Office hours}
+\begin{itemize}
+\item[] M 10:10-11:10 \\ T \hspace{0.1ex} 10:30-11:30 \\ W 10:10-11:10 \\ R \hspace{0.1ex} 12:30-1:30 \\ By appointment (please email me three times you are available)
+\item[]
+\end{itemize}
+
+\textbf{Diversity statement}
+\begin{itemize}
+\item[] This is an inclusive class that welcomes and values participation from individuals of \textbf{all} identities, which includes but is not limited to: race, ethnicity, culture, religion, gender, sexual orientation, language, national origin, age, physical/emotional/developmental ability, and socio-economic class.
+\item[]
+\end{itemize}
+
+\textbf{Course description}
+\begin{itemize}
+\item[]
+Techniques available to the statistician for efficient use of computers to perform statistical computations and to analyze large amounts of data. Use of SAS throughout the course. Includes data preparation, report writing, and basic statistical methods.
+\item[]
+\end{itemize}
+
+
+\textbf{Learning objectives}
+\begin{enumerate}
+\item Formulate a game plan that states the objective before coding.
+\item Identify multiple ways to achieve the game plan; consider pros and cons of the options before coding.
+\item Apply techniques to prepare data for analysis, including: merging or transposing data, creating new variables, and identifying data errors and ``cleaning'' data.
+\item Prepare summary statistics of data; create graphical displays of data.
+\item Execute various statistical analyses and interpret results.
+\item Apply arrays, loops, and SAS macros for efficient coding.
+\item Discuss how SAS's progam data vector operates.
+\item Import data of various sources and formats into SAS.
+\item Verify that code renders the desired result in the presence of missing data.
+\item[]
+\end{enumerate}
+
+\textbf{Course materials}
+\begin{itemize}
+\item[]
+\begin{tabular}{p{2cm} p{14cm}}
+Required  text & \emph{The Little SAS Book: a primer, fifth edition}, by Lora D. Delwiche and Susan J. Slaughter 2012.  There will be assigned readings from this text.  Please note this text book is available as an e-book (for free!) through the Kennedy Library - search for STAT 330 at this site: \url{http://lib.calpoly.edu/search-and-find/open-resources/required-textbooks/}.\\
+[1ex]
+Optional text & \emph{Exercises and Projects for The Little SAS Book}, by Rebecca A. Ottesen, Lora D. Delwiche and Susan J. Slaughter 2015.  This text may be useful to you if you want to do extra practice problems on your own. \\
+[1ex]
+Software & This course will require the use of SAS, SAS Studio, and Jupyter notebooks, all of which are available in the classroom 38-123A.  For access outside of class time, which will be necessary for the completion of assignments, please see \emph{Ways to access/install SAS, SAS Studio, and Jupyter notebooks} on the PolyLearn course site for more information.  Difficulty accessing SAS outside of the classroom is not a valid excuse for late homework.\\
+[1ex]
+Flash drive & Please bring a personal flash drive to class everyday to save your work. \\
+\end{tabular}
+\item[]
+\end{itemize}
+
+
+\textbf{Course evaluation}
+\begin{itemize}
+\item[]
+\begin{minipage}{0.35\textwidth}
+{\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|ll|}
+\hline
+Item & Percentage \\
+\hline
+Pre-class homework & 10\% \\
+Lab assignments    & 20\% \\
+Lab check          & 5\% \\
+Quizzes            & 15\% \\
+Midterm            & 20\%  \\
+Final              & 30\% \\
+%Project            & 15\%\\
+\hline
+\end{tabular}}
+\vskip30pt
+\end{minipage}
+\begin{minipage}{0.05\textwidth} \hspace{0.05in} \end{minipage}
+\begin{minipage}{0.17\textwidth}
+\begin{tabular}{|ll|}
+\hline
+Letter & Percent \\
+\hline
+A	&	93-100	\\
+A-	&	90-92.9	\\
+B+	&	87-89.9	\\
+B	&	83-86.9	\\
+B-	&	80-82.9	\\
+C+	&	77-79.9	\\
+C	&	73-76.9	\\
+C-	&	70-72.9	\\
+D+	&	67-69.9	\\
+D	&	60-66.9	\\
+F	&	0-59.9	\\
+\hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.05\textwidth} \hspace{0.05in} \end{minipage}
+\begin{minipage}{0.35\textwidth}
+%\vskip5pt
+Your lowest homework, lab, lab check, and CFU/quiz grade will be dropped. Late assignments will be accepted with a 30\% per day late penalty.  The PolyLearn grade book is only a \textbf{record} of your grades and is not set up to calculate an accurate overall grade.  Overall grades will be computed outside of PolyLearn.
+\vskip20pt
+\end{minipage}
+\item[]
+\end{itemize}
+
+\clearpage
+\textbf{Pre-class homework}
+\begin{itemize}
+\item[]
+Each class period will be preceeded by a pre-class reading assignment and/or a SAS script to complete.  Homework will be graded as: \\
+\begin{tabular}{ll}
+0 = & no submission \\
+1 = & incomplete \\
+2 = & mostly complete \\
+3 = & complete submission \\
+\end{tabular}
+\item[]
+\end{itemize}
+
+\textbf{Lab assignments}
+\begin{itemize}
+\item[]
+Each class period approximately one hour (some days more, some days less) will be in-class time devoted to completing a lab assignment.  If you do not complete the lab assignment in the allotted time, you are responsible for completing the assignment prior to the next class period.  Labs will be graded according to a more detailed rubric.
+\item[]
+\end{itemize}
+
+\textbf{Lab checks}
+\begin{itemize}
+\item[]
+In the last 10 minutes of each class period, a ``lab check'' prompt will be provided and students will submit responses PolyLearn.  This is to ensure that students are making both adequate and correct progress in the allotted lab time.  It also gives me an opportunity to notify you of anything that looks incorrect prior to submission of your assignment.  Lab checks will be graded as: \\
+\begin{tabular}{ll}
+0 = & no submission \\
+1 = & in progress \\
+2 = & satisfactory \\
+\end{tabular}
+\item[]
+\end{itemize}
+
+
+%\textbf{Check for understanding (CFU)}
+%\begin{itemize}
+%\item[]
+%The check for understanding (CFU) will consist of five questions on PolyLearn and is to be completed after each lab assignment.  This will allow you to practice exam like questions in a low-stakes manner, and allow you to determine if you understood the syntax presented in that lab assignment.
+%\item[]
+%\end{itemize}
+
+
+\textbf{Quizzes}
+\begin{itemize}
+\item[]
+You will have quizzes every 2-4 lectures throughout the quarter.
+\item[]
+\end{itemize}
+
+\textbf{Exams}
+\begin{itemize}
+\item[]
+Both the midterm and final exam will consist of a written portion (not using SAS) and a programming portion (using SAS).  The final exam is cumulative, but will have an emphasis on material presented after the midterm.
+\item[]
+\end{itemize}
+
+\textbf{Optional project}
+\begin{itemize}
+\item[]
+There will be the opportunity to complete an optional project for students who want extra practice.  More details will be provided in a separate document.
+\item[]
+\end{itemize}
+
+\clearpage
+\textbf{Submission instructions}
+\begin{itemize}
+\item
+Unless otherwise stated, students will mostly be submitting SAS program files for assignments (\texttt{.sas} extension).
+\item
+Please include a header such as this one on all assignments with your name, the date, and the assignment number:
+\item[]
+\begin{verbatim}
+/*----------------------------------------*
+| Name: Shannon Pileggi                   |
+| Date: September 14, 2017                |
+| Assignment: Homework 1                  |
+*----------------------------------------*/
+\end{verbatim}
+\item
+Please name your submitted assignments consistently with your last name, assignment type, and number as follows: \texttt{LastnameFirstinitial\_HW\#.sas}
+%\begin{verbatim}
+%LastnameFirstinitial_HW#.sas
+%\end{verbatim}
+\item[]
+\end{itemize}
+
+\textbf{Tips for success}
+\begin{itemize}
+\item \emph{Attend class!}  Attending class gives you the opportunity to interact with your instructor and ask meaningful questions.
+\item \emph{Ask questions!} Your instructor is your best resource to answer any questions or provide any clarification. Please visit office hours early and often!  Seek clarification on course content as soon as questions arise.
+\item \emph{Form a study group!} It is much easier to engage in the learning process if you have peers with which to discuss challenging concepts.
+ \item \emph{Put in the time!}  You know the 25-35 drill: you should be studying \textbf{at least 8 hours a week} for this course.
+\item[]
+\end{itemize}
+
+\textbf{Academic integrity}
+\begin{itemize}
+\item[]
+All students are expected to uphold high standards of academic integrity. The university provides \href{http://www.academicprograms.calpoly.edu/content/academicpolicies/Cheating}{broad definitions} of academic misconduct, and also provides \href{http://www.osrr.calpoly.edu/process}{due process} for students with an alleged violation.  Please note that there may be serious consequences for academic misconduct, including failing an assignment or the course. If you are ever unsure as to whether or not an action is acceptable, please do not hesitate to contact the instructor.
+\item[]
+Collaboration and study groups is strongly encouraged.  However, each student is responsible for submitting his/her own work independently of others.  If submitted computer code appears to be an exact (or near exact) copy of someone else's code, this is academic misconduct.  Any student who does so will be reported to the Office of Students Rights and Responsibilities.
+\item[]
+\end{itemize}
+
+\clearpage
+\textbf{Disability resources}
+\begin{itemize}
+\item[]
+If you have a disability for which you are or may be requesting an accommodation, you are encouraged to contact both your instructor and the \href{http://drc.calpoly.edu/}{Disability Resource Center}, Building 124, Room 119, at (805) 756-1395, as soon as possible.
+\item[]
+\end{itemize}
+
+%\clearpage
+\textbf{Communication}
+\begin{itemize}
+\item[]
+A productive quarter requires good communication between instructors and students, which includes both personal and course related issues. Course related questions can include clarification on course policy, but mostly arise from questions regarding course content. All course related questions should be posted to the PolyLearn discussion forum. This is because it is likely that other students may have similar questions, and then the whole class can benefit from your question. On the other hand, personal communication may entail issues like missing class for personal reasons, or requests for a meeting. Please email me any personal communication.
+\item[]
+\end{itemize}
+
+\textbf{Difficult conversations}
+\begin{itemize}
+\item[]
+Occasionally students encounter challenges in classroom dynamics with other students or even with the professor.  If you ever find yourself in the situation where you aren't comfortable with something that was said or done, please consider taking one of the following actions:
+\begin{itemize}
+\item Discuss the issue with me privately during office hours.
+\item Discuss the issue with the class or individual of concern if you feel you can do so in a respectful and well-communicated way.
+\item Discuss the issue with someone that you feel that you can trust (another faculty member, a mentor, or advisor) and who can, in turn, communicate your concerns with me.
+\end{itemize}
+Change cannot be enacted unless there is awareness of a problem - thank you for taking action.
+\item[]
+\end{itemize}
+
+\textbf{Other policies}
+\begin{itemize}
+\item All course materials and important announcements will be posted on PolyLearn. You are expected to check PolyLearn regularly and read your emails.
+\item Students are expected to attend all class meetings.  However, missing class for religious holidays, school-related travel for academics or athletics, serious illness, or family emergencies is excused, and missed work due to such reasons will be allowed to be made up.
+\item Please notify the instructor in a timely manner of any events that may adversely impact your performance in the class.
+\item[]
+\end{itemize}
+
+%\newpage
+%\textbf{Schedule}
+%\vskip10pt
+\clearpage
+\noindent \emph{This schedule is \underline{tentative} and subject to change.}\\
+\vskip5pt
+{\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{2.5cm} p{0.1cm} p{6.6cm} p{0.1cm} p{6.6cm} p{0.1cm}|}
+\hline
+\textbf{Week} && \textbf{Tuesday} && \textbf{Thursday} & \\
+\hline\hline
+\textbf{1} \newline 9/11 - 9/15  &
+    & \emph{No class} &
+    & L1: Overview of SAS &
+    \\
+\hline
+\textbf{2} \newline 9/18 - 9/22 &
+    & L2: PROC IMPORT, PROC CONTENTS, PROC PRINT, PROC MEANS &
+    & \emph{No class} &
+     \\
+\hline
+\textbf{3} \newline 9/25 - 9/29 &
+    & L3: SAS libraries, PROC UNIVARIATE, PROC FREQ  &
+    & \textbf{Quiz}; L4: Data step basics: IF/then, DROP/KEEP, SAS functions, subsetting data &
+    \\
+\hline
+\textbf{4} \newline 10/2 - 10/6 &
+    & L5: Macros &
+    & L6: Instream data, informats, formats, labels, and PROC FORMAT &
+    \\
+\hline
+\textbf{5} \newline 10/9 - 10/13 &
+    & \textbf{Quiz}; L7: Combining data &
+    & L8: DO loops and arrays  &
+    \\
+\hline
+\textbf{6} \newline 10/16 - 10/20 &
+    & \textbf{Quiz}; L9:Data cleaning and new variable creation; verifying correctness  &
+    & \textbf{Midterm} &
+    \\
+\hline
+\textbf{7} \newline 10/23 - 10/27 &
+    & L10: How the data step works, PROC SGPLOT   &
+    & L11: ODS graphics, PROC TTEST, PROC CORR  &
+    \\
+\hline
+\textbf{8} \newline 10/30 - 11/3 &
+    & L12: turning output into data, PROC TRANSPOSE, PROC EXPORT &
+    & \textbf{Quiz}; L13: PROC ANOVA, PROC REG, and PROC GLM &
+    \\
+\hline
+\textbf{9} \newline 11/6 - 11/10 &
+    & L14: retain/sum, PROC SORT, First./Last.  &
+    & L15: PROC TABULATE &
+    \\
+\hline
+\textbf{10} \newline 11/13 - 11/17 &
+    & \textbf{Quiz}; L16: PROC REPORT  &
+    & L17: PROC SQL  &
+    \\
+\hline
+\textbf{11} \newline 11/20 - 11/24 &
+    & \emph{Thanksgiving break} &
+    & \emph{Thanksgiving break} &
+    \\
+\hline
+\textbf{12} \newline 11/27 - 12/1 &
+    & L18: list input, column input, formatted input   &
+    & \textbf{Quiz};  L19: more options for reading in raw data with INFILE and INPUT&
+    \\
+\hline
+\end{tabular}}
+
+\vskip10pt
+\textbf{Final Exam:}
+\begin{itemize}
+\item Sec 70 (2pm class): Tuesday, Dec 5 4:10pm-7:00pm
+\item Sec 71 (4pm class): Thursday, Dec 7 7:10pm-10:00pm
+%\item[] The \textbf{only} way you may be permitted to take an exam with the other section (not your assigned section) is if you identify a student in the other section who is willing to swap exam times with you.  You are required to notify the instructor if you wish to do so.
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,25 @@
+\ft{A more complex array}
+\bmp{1.0\textwidth}
+\footnotesize
+\begin{code}{.0}
+DATA grades2 ;
+   SET grades ;
+
+   ARRAY scores (*) exam: ;
+
+   ARRAY letters (3) $ ;
+
+   ARRAY letter_values (6) $ (" " "F" "D" "C" "B" "A");
+
+   ARRAY grcuts (6) (0 60 70 80 90 100);
+
+   DO i = 1 TO DIM(SCORES) ;
+		
+   DO j = 2 to 6 ;
+       IF grcuts(j-1) <= scores(i) <= grcuts(j)
+       THEN letters(i) = letter_values(j) ;
+   END ;
+   END ;
+RUN ;
+\end{code}
+\emp

@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Getting started}{3}{0}{1}
+\beamer@sectionintoc {2}{Single variable insertion}{7}{0}{2}
+\beamer@sectionintoc {3}{Macro modules}{15}{0}{3}

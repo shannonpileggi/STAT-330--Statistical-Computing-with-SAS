@@ -1,0 +1,20 @@
+\ft{Group vs  Category Option}
+\bi
+\item In general, both \ttt{GROUP} and \ttt{CATEGORY} options can be used in the SGPLOT statements (ie, HBAR, SCATTER, etc).
+\item The output does look different with the two options.
+\item The \ttt{group} option results in graphical elements that have varying attributes
+\bi
+\item Each unique value of the grouping variable is drawn in a separate style element GraphData$1$ through GraphData$k$
+\item Produces a legend matching graphical styles to group
+\ei
+\item If you want \textbf{different colors} - try \ttt{GROUP}
+\item If you want \textbf{same color} and a legend - try \ttt{CATEGORY}
+\item More info: \url{https://blogs.sas.com/content/iml/2012/08/22/categories-vs-groups-in-proc-sgplot.html}
+%\bi
+%\item \ttt{HBAR/VBAR} uses \ttt{group}
+%\item \ttt{HISTOGRAM} uses \ttt{group}
+%\item \ttt{VBOX/HBOX} uses \ttt{category}
+%\item \ttt{SCATTER}   uses \ttt{group}
+%\item \ttt{SERIES}    uses \ttt{group}
+\ei
+

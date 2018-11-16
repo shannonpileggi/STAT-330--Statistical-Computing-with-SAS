@@ -1,0 +1,20 @@
+\ft{PROC UNIVARIATE}
+\bi
+\item \ttt{PROC UNIVARIATE} has many more options
+\item Like \ttt{PROC UNIVARIATE}, can use \texttt{CLASS} or \texttt{BY} statements
+\item Can also produce graphs
+\ei
+\bmp{0.6\textwidth}
+\footnotesize
+\begin{code}{.0}
+PROC UNIVARIATE DATA = flash.adni ;
+   CLASS dx;
+   VAR MMSE;
+   HISTOGRAM MMSE / NORMAL;
+RUN;
+\end{code}
+\emp
+\bmp{0.4\textwidth}
+\includegraphics[width=1.0\textwidth]{L3_hist.png}\\
+\includegraphics[width=1.0\textwidth]{L3_hist2.png}
+\emp

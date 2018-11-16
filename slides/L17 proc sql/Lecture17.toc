@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Overview}{3}{0}{1}
+\beamer@sectionintoc {2}{SELECT}{7}{0}{2}
+\beamer@sectionintoc {3}{Summarizing data}{13}{0}{3}
+\beamer@sectionintoc {4}{More}{21}{0}{4}

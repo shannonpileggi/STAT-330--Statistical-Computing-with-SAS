@@ -1,0 +1,40 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+
+
+
+\begin{document}
+\hd{7}
+\labn{7}
+\vskip10pt
+These exercises have been adapted and modified from \emph{Exercises and Projects for The Little SAS Book}.
+\vskip10pt
+
+\begin{enumerate}
+\item Create a macro variable called \ttt{path} that corresponds to the computer location of your STAT 330 data sets.
+\item Create a SAS library called \ttt{flash} that uses the \ttt{path} macro variable.
+\item The BabyCentre website publishes the top 10 baby names by gender in various countries.  The names are contained in the SAS data sets \ttt{australia}, \ttt{brazil}, \ttt{france}, \ttt{india}, \ttt{russia}, and \ttt{unitedstates}. Use SAS procedures to examine the SAS data sets, paying attention to the variable names, labels, and attributes.  In a comment in your SAS code, note features of the data that will need to be addressed when combining the data.
+\item Focus on the \ttt{unitedstates} data set first.  Use a DATA step to:
+\begin{enumerate}
+    \item Create a temporary data set called \ttt{unitedstates}.
+    \item  The names of girls and boys are listed in order of ranking (such that the first observation is the most popular name and the $10^{th}$ observation is the $10^{th}$ most popular name).  Use the SAS statement \fbox{\texttt{rank + 1 ;}} to create a variable called \texttt{rank} for the popularity ranking of the name. (We'll discuss how this code works in a future lecture.)
+    \item Create a variable called \texttt{country} which has a value of \texttt{unitedstates} for all names in this data set.
+    \item Lastly, print the \ttt{unitedstates} data.  Your output should match that shown below.
+\end{enumerate}
+\item[]\includegraphics[trim={6.0cm 20cm 5.0cm 0.5cm},clip]{q4.pdf}
+\item Copy and paste your code from the previous question.  Convert this into a macro called \texttt{create\_rank}.  Execute this macro on all data sets (\ttt{australia}, \ttt{brazil}, \ttt{france}, \ttt{india}, \ttt{russia}, and \ttt{unitedstates}).
+\item Combine the data sets by interleaving by popularity ranking (so that all 1's are grouped together, then all 2's, etc.).  Make sure the resulting data set only has one variable for boy names and one variable for girl names.  Print your final data set.  The first 10 observations are shown below so you can verify your output.
+\item[]\includegraphics[trim={6.0cm 20cm 5.0cm 0.5cm},clip]{q6.pdf}
+\item Information Technology Services (ITS) at Central State University has a computing service called ``The Grid,'' which is offered to faculty, staff, and students.  ITS tracks information on registered users in a SAS data set called \ttt{users} and information about the projects that they have registered on The Grid in a SAS data set called \ttt{projects}.  Users are allowed to register more than one project at a time; however, only one project can actually be processed at a time.  Use SAS procedures to examine the SAS data sets, paying attention to the variable names, labels, and attributes.  In a comment in your SAS code, (1) note the number of observations in the \ttt{users} and \ttt{projects} data sets, and (2) state your game plan for combining this data - would it be a stack, interleave, one to one merge, or one to many merge?
+\item Combine the \ttt{users} and \ttt{projects} data sets into one SAS data set.  Utilize PROC CONTENTS and verify that you have 7,273 observations in your data set.
+\item Utilize a data step to create three SAS data sets: (1) incomplete projects (no end date), (2)  completed projects (with an end date), and (3) users with no registered projects.  Examine your log to determine the number of observations in the data sets, and note these results as a comment in your SAS code.   Utilize PROC CONTENTS on these three data sets and verify that you have 3,146 observations with incomplete projects, 4,127 observations with complete projects, and 7 observations that are users with no registered projects.  \emph{Hint: review Lecture 4 slide 27 for review on subsetting to multiple data sets.)}
+%\item Work with the completed projects data.
+%\begin{enumerate}
+%\item Create a variable the represents the cumulative count of the number of completed projects for each user.
+%\item Use a SAS procedure to identify the largest number of completed projects by a single user.
+%\item Use a SAS procedure to identify the name of the user with the largest number of completed projects.
+%\item Print all project data for the user with the largest number of completed projects.  Apply a format to the date variables so that they are read as calendar dates.
+%\end{enumerate}
+\end{enumerate}
+
+\end{document} 

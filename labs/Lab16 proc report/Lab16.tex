@@ -1,0 +1,37 @@
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Labs/LabStyle.tex"}
+
+\begin{document}
+\hd{16}
+\labn{16}
+\vskip10pt
+
+\noindent Recall Lab 14 and Lab 15 where you created a table of descriptive statistics of the 2012 Olympic Medalists by country using the \ttt{O2012.sas7bdat} data set (this data set name starts with an ``oh'' and not a zero).  In this lab, you are going to follow a series of steps to re-create that table using \ttt{PROC REPORT}.  Skip to page 3 to see an example table.
+ \begin{enumerate}
+\item Create a SAS library to access the \ttt{O2012.sas7bdat}.  Follow the subsequent steps to create the table.
+\item Use \ttt{PROC REPORT} to create a table with countries along the rows and a single column \ttt{N}, which represents the number of medalists per country.
+\item[] \includegraphics[trim={1.5cm 24.0cm 1cm 1.3cm},clip,width=1.0\textwidth]{Q2.pdf}
+\item Copy and paste your SAS code from the previous step.  Modify this code so that the table now has three additional columns for the variables \ttt{total}, \ttt{age}, and \ttt{weight}.
+\item[] \includegraphics[trim={1.5cm 24.0cm 1cm 1.3cm},clip,width=1.0\textwidth]{Q3.pdf}
+\item Copy and paste your SAS code from the previous step.  Modify this code to adjust the statistics that are displayed for the variables.  For \ttt{total}, display the sum, mean, and max; and for \ttt{age} and \ttt{weight} display the average.
+\item[] \includegraphics[trim={1.5cm 24.0cm 1cm 1.3cm},clip,width=1.0\textwidth]{Q4.pdf}
+\item Copy and paste your SAS code from the previous step.  Modify this code to include the variable \ttt{gender} on the columns of your table.
+\item[] \includegraphics[trim={1.5cm 24.0cm 1cm 1.3cm},clip,width=1.0\textwidth]{Q5.pdf}
+\item Copy and paste your SAS code from the previous step.  Modify this code to create two additional columns in your table that represent the \emph{proportion} of the country's medalists that are male/female.  Note that \ttt{PROC REPORT} doesn't have an option for a row percent like \ttt{PROC TABULATE}, so you'll need to \emph{compute} this value.  
+\item[] \includegraphics[trim={0cm 24.0cm 0cm 1.3cm},clip,width=1.0\textwidth]{Q6.pdf}
+\item Copy and paste your SAS code from the previous step.  Modify this code to alter various display attributes.
+\begin{enumerate}
+\item Suppress printing of the gender \emph{counts} by using an option on the \ttt{DEFINE} statement for \ttt{gender}.
+\item Create a column header called ``Demographics'' that spans the age, weight, and gender statistics.
+\item Adjust variable labels as shown in the final table on page 3.
+\item Round the average age and average weight statistics to one decimal; round the average total statistic to two decimals. \emph{Note: The PERCENT format is standard, built-in SAS format.  This is not the same format as we used in the previous lab.}
+\item Apply the \emph{PERCENT} format to your gender variables so that values display as percentages rather than proportions.
+\item Highlight the cells (in the color of your choice) that correspond to countries with more than 20 medalists using the \fbox{\ttt{style(column)=\{backgroundcolor=\emph{mycolor}\}}} \emph{option} on a \ttt{DEFINE} statement.
+\item The \ttt{MISSTEXt} option in \ttt{PROC TABULATE} allowed you to easily change the display of missing values.  There is no option equivalent in \ttt{PROC REPORT}.  There are ways you can change the display of missing values using formatting or other global options, but we are going to skip that for this lab.  Leave the missing values as a period.
+\end{enumerate}
+\item
+Export your final table to a pdf in the style of your choice (upload this pdf to PolyLearn in addition to your SAS code).  Open your final table, and verify that it appears as the table on page 3.
+\end{enumerate}
+\newpage
+\includegraphics[trim={0cm 0cm 0cm 1.3cm},clip,width=1.0\textwidth]{Q8.pdf}
+
+\end{document} 

@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Stacking}{3}{0}{1}
+\beamer@sectionintoc {2}{Merging}{8}{0}{2}
+\beamer@sectionintoc {3}{Tracking Observations}{15}{0}{3}

@@ -1,0 +1,472 @@
+
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Lectures/SlideStyle.tex"}
+
+
+
+\title[Lecture 5]{SAS Macros}
+\author[Pileggi]{Shannon Pileggi}
+
+\institute[STAT 330]{STAT 330}
+
+\date{}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{OUTLINE\qquad\qquad\qquad} \tableofcontents[hideallsubsections]
+\end{frame}
+
+
+
+%===========================================================================================================================
+\section[Getting started]{Getting started}
+%===========================================================================================================================
+\subsection{}
+%\begin{frame}
+%\tableofcontents[currentsection, hideallsubsections]
+%\end{frame}
+
+
+
+\begin{frame}
+\ft{SAS macros}
+\bi
+\item The SAS macro facility is a \emph{text processing facility}
+\item It allows us to insert/include line(s) of SAS code anywhere in the entire program
+\item This provides a \ttb{very} convenient way to automate many processes
+\item It is very much like having a handy recording of SAS code which you can play back whenever you need
+\item Macros can be broken down into two main types: \\
+\bi
+\item single variable insertion \\
+\item multiple lines insertion
+\ei
+\ei
+\end{frame}
+
+
+\begin{frame}
+\ft{The Macro Processor and the Standard SAS Processor}
+\bi
+\item In the presence of macro code, SAS will go through an initial scan of your code and `resolve' any macros first.
+\item After the initial scan, the appropriate line(s) of SAS code are `inserted' (it's like a program that writes a program)
+\item Finally, SAS compiles the full code and executes as usual
+\ei
+\end{frame}
+
+\begin{frame}
+\ft{Macro triggers}
+When a SAS program is submitted, two token sequences are recognized as \emph{macro triggers}: \\
+\vskip15pt
+\begin{enumerate}
+    \item \ttt{\&name-token} - a macro variable reference
+    \item \ttt{\%name-token} - a macro statement, function, or call
+\end{enumerate}
+\vskip15pt
+(A \emph{token} is a fundamental unit of text.)
+\end{frame}
+
+
+\begin{frame}
+\ft{Debugging macros}
+Items that are underlined represent the default SAS settings:
+\bi
+\small{
+\item \ttt{\textbf{\underline{MERROR}} | NOMERROR} -- issues a warning in the log window when attempting to invoke a macro that does not exist.
+\item \ttt{\textbf{\underline{SERROR}} | NOSERROR} -- issues a warning in the log window when attempting to use a macro variable that does not exist.
+\item \ttt{\textbf{MLOGIC | \underline{NOMLOGIC}}} -- prints (in the log window) details of every macro step.
+\item \ttt{\textbf{MPRINT | \underline{NOMPRINT}}} -- prints (in the log window) details of what SAS ultimately ``sees'' during the Standard SAS Processor stage.
+\item \ttt{\textbf{SYMBOLGEN | \underline{NOSYMBOLGEN}}} -- prints (in the log window) the resolved values of any macro variables. }
+\ei
+Use the following to ensure ALL your macro tools are made available to you:
+\hspace{1.5in}\fbox{\ttt{OPTIONS MPRINT MLOGIC SYMBOLGEN;}}
+\end{frame}
+
+
+%===========================================================================================================================
+\section[Single variable insertion]{Single variable insertion}
+%===========================================================================================================================
+\subsection{}
+\begin{frame}
+\tableofcontents[currentsection, hideallsubsections]
+\end{frame}
+
+\begin{frame}
+\ft{Macro Variable: The Single Variable Insertion}
+\bi
+\item Macro variables have a \emph{single} value and do \emph{not} belong to a data set
+\item When reference, macro variable names are prefixed with an ampersand (\ttt{\&})
+\item All macro variables are stored as \emph{character} based variables
+\item You may name a macro variable whatever you wish, but do not use \ttt{sys} as the first three letters of a macro variable. Such variables are reserved for special purposes.
+\item A macro variable may have a \ttb{global scope} (can be used any where in the code) or a \ttb{local scope} (used only in a macro).
+\ei
+\end{frame}
+
+\begin{frame}[fragile]
+\ft{Automatic macro variables}
+\bi
+\item SAS has automatic macro variables that begin with the prefix \ttt{sys}
+\item \url{http://support.sas.com/documentation/cdl/en/mcrolref/61885/HTML/default/viewer.htm#a003167023.htm}
+\ei
+\bmp{1.0\textwidth}
+\footnotesize
+\begin{code}{.0}
+TITLE "Contents of Baseball Data on  \textcolor{OrangeRed}{&sysdate9}" ;
+PROC CONTENTS DATA = sashelp.baseball VARNUM ;
+RUN ;
+TITLE ;
+\end{code}
+\emp
+\end{frame}
+
+
+
+\begin{frame}
+\ft{Macro Variable: The Single Variable Insertion}
+\bi
+\item  To create a basic macro variable we use \fbox{\ttt{\%LET macro\textunderscore variable\textunderscore  name = \emph{value} ;}}
+\item \ttt{\%LET} statements are valid in open code (any where in SAS program)
+\item When \emph{assigning} a macro variable a value
+\bi
+\item do not do \ttt{\%LET \textcolor{OrangeRed}{\&}macro\textunderscore variable\textunderscore = \emph{value} ;}
+\item do not put quotes around the \ttt{\emph{value}}
+\ei
+\item This is useful for changing values during a SAS program without having to change the entire program itself
+\item  To use the macro variable that you've created call it with \ttt{\&macro\textunderscore variable\textunderscore  name}
+\ei
+\end{frame}
+
+\begin{frame}[fragile]
+\ft{Resolving macro variables}
+\begin{center}
+\bmp{0.6\textwidth}
+\footnotesize
+\begin{code}{.0}
+\%LET my\_GPA = 3.3;
+\%LET country = New Zealand;
+\end{code}
+\emp
+\end{center}
+\vskip10pt
+\begin{tabular}{ll}
+\ttb{SAS Code} &  \fbox{\ttt{IF GPA = \textcolor{OrangeRed}{\&my\_GPA};}}\\
+\ttb{Resolves to}  & \hspace{0.02in}  \ttt{IF GPA = \textcolor{OrangeRed}{3.3};}\\
+[3ex]
+\ttb{SAS Code} & \fbox{\ttt{title "Addresses in \textcolor{OrangeRed}{\&country}";}} \\
+\ttb{Resolves to}  &   \ttt{title "Addresses in \textcolor{OrangeRed}{New Zealand}";}
+\end{tabular}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\ft{Baseball data}
+\bmp{1.0\textwidth}
+\footnotesize
+\begin{code}{.0}
+TITLE "Data = \textcolor{OrangeRed}{sashelp.basesball}, Obs = \textcolor{OrangeRed}{10}" ;
+PROC PRINT DATA = \textcolor{OrangeRed}{sashelp.baseball} (OBS = \textcolor{OrangeRed}{10});
+RUN ;
+TITLE ;
+\end{code}
+\emp
+\vskip15pt
+\oyo Convert the dataset name of \textcolor{OrangeRed}{\ttt{sashelp.basesball}} and the number of observations printed \textcolor{OrangeRed}{\ttt{10}} to macro variables named \textcolor{OrangeRed}{\ttt{dsn}} and \textcolor{OrangeRed}{\ttt{num}}.
+\end{frame}
+
+\begin{frame}[fragile]
+\bmp{0.5\textwidth}
+\footnotesize
+\begin{code}{.0}
+\%let x=15;
+\%let y=10;
+\%let z=\&x-\&y;
+\end{code}
+\emp
+\vskip10pt
+\begin{clicker}{What is the value of the SAS macro variable \ttt{z}?}
+\begin{enumerate}
+    \item \ttt{5}
+    \item \ttt{15-10}
+    \item \ttt{x-y}
+    \item \ttt{\&15-\&10}
+    \item \ttt{error}
+\end{enumerate}
+\end{clicker}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\ft{Macro variables for path names}
+
+\bmp{0.80\textwidth}
+\footnotesize
+\begin{craw}{.0}{Original Code}
+LIBNAME mylib "\textcolor{OrangeRed}{X:/spileggi/Data Sets/}" ;
+PROC IMPORT OUT = mylib.babies
+   DATAFILE = "\textcolor{OrangeRed}{X:/spileggi/Data Sets/}babies.csv"
+   DBMS = CSV REPLACE;
+RUN;
+\end{craw}
+\emp
+\vskip10pt
+\bmp{0.80\textwidth}
+\footnotesize
+\begin{craw}{.0}{New Code}
+\%LET \textcolor{OrangeRed}{mypath} = X:/spileggi/Data Sets/ ;
+LIBNAME mylib "\textcolor{OrangeRed}{&mypath}" ;
+PROC IMPORT OUT = mylib.babies
+   DATAFILE = "\textcolor{OrangeRed}{&mypath.}babies.csv"
+   DBMS = CSV REPLACE;
+RUN;
+\end{craw}
+\emp
+\bmp{0.02\textwidth} \hspace{1in} \emp
+\bmp{0.25\textwidth}
+A period allows you to concatenate a macro variable with other text.
+\emp
+\end{frame}
+
+%===========================================================================================================================
+\section[Macro modules]{Macro modules}
+%===========================================================================================================================
+\subsection{}
+\begin{frame}
+\tableofcontents[currentsection, hideallsubsections]
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Macro Modules: Multiple Lines Insertion}
+If you ever find yourself writing the same code over and over you should consider using a macro module.
+\vskip10pt
+\bmp{0.45\textwidth}
+\begin{craw}{.0}{Macro Definition}
+\%MACRO macro\_name ;
+
+    \emph{...code...}
+
+\%MEND ;
+\end{craw}
+\emp
+\bmp{0.05\textwidth}\hspace{0.1in}\emp
+\bmp{0.45\textwidth}
+\begin{craw}{.0}{Macro Execution}
+
+
+\%macro_name ;
+
+
+\end{craw}
+\emp
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Macro module, no parameters}
+\hspace*{-0.3in}
+\bmp{0.60\textwidth}
+\begin{craw}{.0}{Macro Definition}
+\%MACRO myprint ;
+TITLE "DATA = &dsn, OBS = &num" ;
+PROC PRINT DATA = &dsn (OBS=&num);
+RUN ;
+TITLE ;
+\%MEND ;
+\end{craw}
+\emp
+\bmp{0.02\textwidth}\hspace{0.1in}\emp
+\bmp{0.50\textwidth}
+\begin{craw}{.0}{Macro Execution}
+
+\%LET num = 10 ;
+\%LET dsn = sashelp.baseball ;
+
+\%myprint ;	
+
+\end{craw}
+\emp
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Macro module, positional parameters }
+\hspace*{-0.3in}
+\bmp{0.58\textwidth}
+\begin{craw}{.0}{Macro Definition}
+\%MACRO myprint(dsn, num) ;
+TITLE "DATA = &dsn, OBS = &num" ;
+PROC PRINT DATA = &dsn (OBS=&num);
+RUN ;
+TITLE ;
+\%MEND ;
+\end{craw}
+\emp
+\bmp{0.02\textwidth}\hspace{0.1in}\emp
+\bmp{0.52\textwidth}
+\begin{craw}{.0}{Macro Executions}
+
+\%myprint(sashelp.baseball,5) ;	
+
+\%myprint(sashelp.class,3) ;	
+
+
+\end{craw}
+\emp
+\begin{itemize}
+\item[]
+\item no equal sign in MACRO definition
+\item the parameter values match the order in which they are listed in the macro definition
+\item the order of the parameter values matters
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Macro module, keyword parameters }
+\hspace*{-0.35in}
+\bmp{0.80\textwidth}
+\begin{craw}{.0}{Macro Definition}
+\%MACRO myprint(dsn = sashelp.baseball, num = 5) ;
+TITLE "DATA = &dsn, OBS = &num" ;
+PROC PRINT DATA = &dsn (OBS=&num);
+RUN ;
+TITLE ;
+\%MEND ;
+\end{craw}
+\vskip2pt
+\begin{craw}{.0}{Macro Executions}
+\%myprint ;
+\%myprint();
+\%myprint(dsn = sashelp.baseball, num = 5) ;	
+\%myprint(num = 5, dsn = sashelp.baseball) ;	
+\%myprint(num = 3) ;	
+\%myprint(dsn = sashelp.class, num = 3) ;
+\end{craw}
+\emp
+%\bmp{0.01\textwidth}\hspace{0.1in}\emp
+\bmp{0.34\textwidth}
+\begin{itemize}
+\item[]
+\item uses an equal sign in MACRO definition
+\item sets default values for parameters
+\item can replace all or some subset of default values
+\item the order of the parameter values matter does not matter
+\item[]
+\item[]
+\item[]
+\end{itemize}
+\emp
+\end{frame}
+
+
+
+
+\begin{frame}
+\ft{Developing Macro Applications}
+Follow these steps to create and de-bug your SAS macros:
+\begin{enumerate}
+    \item Write and debug a SAS program without macro coding.
+    \item Generalize the program by replacing hardcoded values with macro variable references.
+    \item Create a macro definition with macro parameters.
+    \item  Add macro-level programming for conditional and iterative processing.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\ft{Tips and warnings}
+Tips:
+\bi
+\item ALWAYS include the macro debugging options in your SAS program when writing macros
+\item[] \fbox{\ttt{OPTIONS MPRINT MLOGIC SYMBOLGEN;}}
+\item With these options, you should be able to see what values a macro parameter resolves to.  Another way is with \ttt{\%PUT}, which prints text to the \ttt{LOG}.
+\item[] \fbox{\ttt{\%PUT dsn = \&dsn , num = \&num;}}
+\item[]
+\ei
+
+Warnings:
+\bi
+    \item use the \fbox{\ttt{\textbackslash* ... *\textbackslash}} commenting style when coding macros
+    \item use double quotations (instead of single quotations) when calling macro variable names
+\ei
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\fbox{\ttt{\%LET month = January;}}
+\end{center}
+\begin{clicker}{Which of the following produces the title \\ \emph{The month is January}?}
+    \begin{enumerate}
+        \item \ttt{title "The month is \&month";}
+        \item \ttt{title `The month is \&month';}
+        \item \ttt{title "The month is \%month";}
+        \item  \ttt{title `The month is \%month';}
+    \end{enumerate}
+\end{clicker}
+\end{frame}
+
+\begin{frame}
+\ft{Macro Conditional Logic}
+\bi
+\item We can use conditional logic \textbf{outside of data steps} within macros using \ttt{\%IF, \%THEN, \%DO -- \%END, \%ELSE}
+\item These statements work like their counterparts \ttt{IF, THEN, DO -- END, ELSE}
+\item These conditional logic statements
+	\bi
+	\item \textbf{can only be used within a macro module }
+	\item are `seen' only during the initial macro resolution scanning process
+	\item are NOT included into the SAS code itself
+	\ei
+\ei
+\end{frame}
+
+\begin{frame}[fragile]
+\ft{\%DO loop}
+\bi
+\item The \verb|%DO ... %TO| statement allows you to perform loops inside a macro. \\
+\item \ttt{\%DO} loops in macros have the same kind of structure as standard \ttt{DO} loops in regular SAS code.\\
+\item As with the conditional logic statements in macros \textbf{[}i.e. \verb|%IF ... %THEN|\textbf{]}, these statements \textbf{must} be embedded within a macro module -- they \textbf{cannot}  be placed outside of a macro module and in ``open SAS code''.\\
+\ei
+\end{frame}
+
+\begin{frame}
+\ft{Using CALL SYMPUTX}
+Using \ttt{CALL SYMPUTX} allows you to take a value from the data step and assign it to a macro variable.
+\begin{center}
+ \fbox{\ttt{CALL SYMPUTX("macrovariablename" ,value)}}
+\end{center}
+	\bi
+	\item \ttt{macrovariablename} \ttb{must} be surrounded by quotes
+	\item \ttt{value} can be
+    \bi
+    \item a string in quotes (character or numeric)
+    \item the name of a variable that SAS will use to assign a value (in this case, do NOT use quotes)
+	\ei
+%\item \ttt{CALL SYMPUTX}, introduced in Version 9, is the improved version of \ttt{CALL SYMPUT}
+%	\bi
+%	\item \ttt{SYMPUTX} automatically converts numeric variables to character
+%variables before assigning it to a macro variable. No such conversion occurred with \ttt{SYMPUT} and that usually led to a warning message in the log.
+%	\item \ttt{SYMPUTX} strips leading and trailing blanks. \ttt{SYMPUT} often included unnecessary blanks and so a function such as \ttt{TRIM} was needed ... very clumsy coding.
+%	\ei
+\ei
+\end{frame}
+
+%
+%\begin{frame}
+%\begin{clicker}{Which statement correctly creates an index variable named \ttt{i}?}
+%\begin{enumerate}
+%\item \ttt{\%do \&i=1 \%to 10;}
+%\item \ttt{\%do \&i=1 to 10;}
+%\item \ttt{\%do i=1 \%to 10;}
+%\item \ttt{\%do i=1  to 10;}
+%\end{enumerate}
+%\end{clicker}
+%\end{frame}
+
+\end{document} 

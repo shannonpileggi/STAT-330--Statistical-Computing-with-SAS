@@ -1,0 +1,588 @@
+
+
+\input{"C:/Users/spileggi/Google Drive/STAT 330/Lectures/SlideStyle.tex"}
+
+
+
+\title[Lecture 7]{Combining Data}
+\author[Pileggi]{Shannon Pileggi}
+
+\institute[STAT 330]{STAT 330}
+
+\date{}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{OUTLINE\qquad\qquad\qquad} \tableofcontents[hideallsubsections]
+\end{frame}
+
+%\begin{frame}
+%\ft{Overview}
+%\begin{tabular}{p{3cm} p{3cm} p6{cm}}
+%Action & Description & SAS key statements \\
+%Concatenate & Stack data steps on top of each other
+%Interleave &
+%One to One Merge &
+%One to Many Merge &
+%\end{tabular}
+%\end{frame}
+
+%===========================================================================================================================
+\section[Stacking]{Stacking}
+%===========================================================================================================================
+\subsection{}
+\begin{frame}[fragile]
+\ft{Concatenate}
+\bi
+\item[Goal:] combine multiple data sets that have the same variables
+\item[How:] use the \ttt{SET} statement to concatenate (or stack) the data sets
+\ei
+\bmp{.50\textwidth}
+\footnotesize
+\begin{craw}{.1}{Data Set MEN}
+ID   NAME     GRADE
+1    Andrew     B+
+3    Jimmy      B-
+5    Ulric      A-
+\end{craw}
+\vspace{.0in}
+\begin{craw}{.1}{Data Set WOMEN}
+ID   NAME     GRADE
+2    Soma       B
+4    Karen      A
+6    Beth       B+
+\end{craw}
+\vspace{.0in}
+\emp
+\bmp{.50\textwidth}
+\begin{code}{.}
+DATA STACKED;
+   \textcolor{OrangeRed}{SET} men women;
+RUN;
+\end{code}
+\vspace{.0in}
+\begin{craw}{.1}{Data Set STACKED}
+ID   NAME     GRADE
+1    Andrew     B+
+3    Jimmy      B-
+5    Ulric      A-
+2    Soma       B
+4    Karen      A
+6    Beth       B+
+\end{craw}
+\emp
+\vspace{.0in}
+\end{frame}
+
+\begin{frame}[fragile]
+\ft{Interleave}
+\bi
+\item[Goal:] stack data while retaining some sort of order
+\item[How:] use the \ttt{SET} statement with \ttt{BY} (data must be pre-sorted)
+\ei
+\bmp{.50\textwidth}
+\footnotesize
+\begin{craw}{.1}{Data Set MEN}
+ID   NAME     GRADE
+1    Andrew     B+
+3    Jimmy      B-
+5    Ulric      A-
+\end{craw}
+\vspace{.0in}
+\begin{craw}{.1}{Data Set WOMEN}
+ID   NAME     GRADE
+2    Soma       B
+4    Karen      A
+6    Beth       B+
+\end{craw}
+\vspace{.0in}
+\emp
+\bmp{.50\textwidth}
+\begin{code}{.}
+DATA INTERLEAVE;
+   \textcolor{OrangeRed}{SET} men women;
+   \textcolor{OrangeRed}{BY} ID;
+RUN;
+\end{code}
+\vspace{.0in}
+\begin{craw}{.1}{Data Set INTERLEAVE}
+ID   NAME     GRADE
+1    Andrew     B+
+2    Soma       B
+3    Jimmy      B-
+4    Karen      A
+5    Ulric      A-
+6    Beth       B+
+\end{craw}
+\emp
+\vspace{.0in}
+\end{frame}
+
+\begin{frame}[fragile]
+\ft{PROC SORT syntax}
+\bmp{0.45\textwidth}
+\footnotesize
+\begin{code}{.0}
+PROC SORT DATA = men ;
+   BY ID ;
+RUN ;
+
+PROC SORT DATA = women ;
+   BY ID ;
+RUN ;
+
+DATA DEMO;
+SET men women ;
+BY ID;
+RUN;
+\end{code}
+%\vskip5pt
+Original \texttt{men} and \texttt{women} data set \\are sorted.
+\vskip40pt
+\textcolor{white}{x}
+\emp
+\bmp{0.02\textwidth}\hspace{1in} \emp
+\bmp{0.55\textwidth}
+\footnotesize
+\begin{code}{.0}
+PROC SORT DATA = men
+   \textcolor{OrangeRed}{OUT = sorted_men} ;
+   BY ID ;
+RUN ;
+PROC SORT DATA = women
+   \textcolor{OrangeRed}{OUT = sorted_women} ;
+   BY ID ;
+RUN ;
+DATA DEMO;
+SET \textcolor{OrangeRed}{sorted_men} \textcolor{OrangeRed}{sorted_women} ;
+BY ID;
+RUN;
+\end{code}
+%\vskip5pt
+Original \texttt{men} and \texttt{women} data sets remain \emph{unsorted}; newly created data sets \textcolor{OrangeRed}{\texttt{sorted\_men}} and \textcolor{OrangeRed}{\texttt{sorted\_women}} are sorted.
+\vskip30pt
+\textcolor{white}{x}
+\emp
+\end{frame}
+
+\begin{frame}[fragile]
+\ft{Discussion}
+\bmp{.50\textwidth}
+\footnotesize
+\begin{craw}{.1}{Data Set MEN}
+ID   NAME     \textcolor{OrangeRed}{GRADE}
+1    Andrew     B+
+3    Jimmy      B-
+5    Ulric      A-
+\end{craw}
+\vspace{.0in}
+\begin{craw}{.1}{Data Set WOMEN}
+ID   NAME     \textcolor{OrangeRed}{LETTER}
+2    Soma       B
+4    Karen      A
+6    Beth       B+
+\end{craw}
+\vspace{.0in}
+\emp
+\bmp{.57\textwidth}
+\begin{code}{.}
+DATA demo;
+  SET men women ;
+RUN;
+\end{code}
+\vspace{.0in}
+\begin{clicker}{The goal is for the \texttt{demo} data set to have \underline{\hspace{0.3in}} variables; it would have \underline{\hspace{0.3in}} variables.}
+\begin{enumerate}
+\item 2, 3
+\item 3, 3
+\item 3, 4
+\item 4, 3
+\item 4, 4
+\end{enumerate}
+\end{clicker}
+\emp
+\vspace{.0in}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\ft{Rename}
+\bi
+\item[Goal:] stack data with same variables but different names
+%\item[How:] use the \ttt{rename} statement
+\ei
+\bmp{.50\textwidth}
+\footnotesize
+\begin{craw}{.1}{Data Set MEN}
+ID   NAME     \textcolor{OrangeRed}{GRADE}
+1    Andrew     B+
+3    Jimmy      B-
+5    Ulric      A-
+\end{craw}
+\vspace{.0in}
+\begin{craw}{.1}{Data Set WOMEN}
+ID   NAME     \textcolor{OrangeRed}{LETTER}
+2    Soma       B
+4    Karen      A
+6    Beth       B+
+\end{craw}
+\vspace{.0in}
+\emp
+\bmp{.57\textwidth}
+\begin{code}{.}
+DATA DEMO;
+SET men
+  women \textcolor{OrangeRed}{(RENAME=(LETTER=GRADE))};
+BY ID;
+RUN;
+\end{code}
+\vspace{.0in}
+\begin{craw}{.1}{Data Set DEMO}
+ID   NAME     GRADE
+1    Andrew     B+
+2    Soma       B
+3    Jimmy      B-
+4    Karen      A
+5    Ulric      A-
+6    Beth       B+
+\end{craw}
+\emp
+\vspace{.0in}
+\end{frame}
+
+
+
+
+
+
+
+%===========================================================================================================================
+\section[Merging]{Merging}
+%===========================================================================================================================
+\subsection{}
+\begin{frame}
+\tableofcontents[currentsection, hideallsubsections]
+\end{frame}
+
+
+\begin{frame}[fragile]
+\ft{One to one merge}
+\bi
+\item[Goal:] \small{combine multiple data sets that have some related and some different variables}
+\item[How:] \small{use the \ttt{MERGE} statement \ttt{BY} identifying variables (data must be pre-sorted)}
+\ei
+\bmp{.50\textwidth}
+\footnotesize
+\begin{craw}{.1}{Data Set MEN}
+ID   NAME     GRADE
+1    Andrew     B+
+3    Jimmy      B-
+5    Ulric      A-
+\end{craw}
+%\vspace{.0in}
+\begin{craw}{.1}{Data Set HEIGHT\_M}
+ID HEIGHT
+1  68
+3  69
+5  72
+\end{craw}
+\vspace{.0in}
+\emp
+\bmp{.50\textwidth}
+\begin{code}{.}
+DATA merged;
+  \textcolor{OrangeRed}{MERGE} men height\_m;
+  \textcolor{OrangeRed}{BY} ID;
+RUN;
+\end{code}
+%\vspace{.0in}
+\begin{craw}{.1}{Data Set MERGED}
+ID NAME   GRADE HEIGHT
+1  Andrew  B+    68
+3  Jimmy   B-    69
+5  Ulric   A-    72
+\end{craw}
+\emp
+\vspace{.0in}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\ft{Discussion}
+\bmp{.50\textwidth}
+\footnotesize
+\begin{craw}{.1}{Data Set MEN}
+ID   NAME     \textcolor{OrangeRed}{GRADE}
+1    Andrew   \textcolor{OrangeRed}{B+}
+3    Jimmy    \textcolor{OrangeRed}{B-}
+5    Ulric    \textcolor{OrangeRed}{A-}
+\end{craw}
+%\vspace{.0in}
+\begin{craw}{.1}{Data Set HEIGHT\_M}
+ID HEIGHT \textcolor{OrangeRed}{GRADE}
+1  68     \textcolor{OrangeRed}{F}
+3  69     \textcolor{OrangeRed}{F}
+5  72     \textcolor{OrangeRed}{F}
+\end{craw}
+\vspace{.0in}
+\emp
+\bmp{.50\textwidth}
+\begin{code}{.}
+DATA merged;
+   MERGE men height\_m;
+   BY ID;
+RUN;
+\end{code}
+%\vspace{.0in}
+\oyo
+\begin{enumerate}
+\item How many variables will be in the resulting data set?
+\item What will be the values of the \ttt{GRADE} variable(s)?
+\item[]
+\end{enumerate}
+\emp
+\vspace{.0in}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\ft{Merging issues}
+\bi
+\item Must have at least one common variable between the data sets to use for matching purposes (like ID)
+\item Data sets need to be pre-sorted by the variable(s) specified in the \ttt{BY} statement
+\item When merging two data sets that have a variable name in common (which is not an identifying variable) the variable from the second data set will
+\textbf{overwrite} the first
+\item To fix this, use data set options (like drop/keep/rename) \underline{in parentheses} beside the data set name
+\ei
+\end{frame}
+
+
+\begin{frame}
+\ft{Data set options}
+\bmp{0.4\textwidth} \hspace{0.05\in} \emp
+\bmp{0.6\textwidth}
+\bi
+\item[\fbox{\ttt{KEEP =} \emph{variable-list}}] specifies variable(s) to keep
+\item[\fbox{\ttt{DROP =} \emph{variable-list}}] specifies variable(s) to drop
+\item[\fbox{\ttt{RENAME =} \emph{(oldvar=newvar)}}] renames variable(s)
+\item[\fbox{\ttt{FIRSTOBS =} \emph{n}}] start reading at $n$
+\item[\fbox{\ttt{OBS =} \emph{n}}] stop reading at $n$
+\item[\fbox{\ttt{IN =} \emph{new-var-name}}] creates temporary tracking variable
+\item[\fbox{\ttt{WHERE =} \emph{condition}}] selects observations
+\item[]
+\ei
+\emp \\
+\hspace*{-0.3in}
+\bi
+\item[Ex1] \ttt{SET animals (KEEP =  Class Species Status);}
+\item[Ex2] \ttt{DATA animals (DROP =  Habitat Sex);}
+\item[Ex3] \ttt{MERGE animals1 animals2 (RENAME = (Sex=Gender));}
+\ei
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\ft{Discussion}
+\bmp{.50\textwidth}
+\footnotesize
+\begin{craw}{.1}{Data Set MEN}
+ID   NAME     GRADE
+1    Andrew   B+
+3    Jimmy    B-
+5    Ulric    A-
+\textcolor{OrangeRed}{8    Allan    B}
+\end{craw}
+%\vspace{.0in}
+\begin{craw}{.1}{Data Set HEIGHT\_M}
+ID HEIGHT
+1  68
+3  69
+5  72
+\textcolor{OrangeRed}{10 70}
+\end{craw}
+\vspace{.0in}
+\emp
+\bmp{.50\textwidth}
+\begin{code}{.}
+DATA merged;
+   MERGE men height\_m;
+   BY ID;
+RUN;
+\end{code}
+%\vspace{.0in}
+\begin{clicker}{How many \emph{observations} will be in the resulting data set?}
+\begin{itemize}
+\item[0.] none - there will be an error
+\item[3.] 3
+\item[4.] 4
+\item[5.] 5
+\end{itemize}
+\end{clicker}
+\emp
+\vspace{.0in}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\ft{One to many merge}
+\bi
+\item[Goal:] combine data sets that have different numbers of observations
+\item[How:] use the \ttt{MERGE} statement \ttt{BY} identifying variables (data must be pre-sorted)
+\ei
+\bmp{0.36\textwidth}
+\footnotesize
+\begin{craw}{.0}{Data Set PROF}
+ID   NAME
+1    Sklar
+3    Doi
+4    Peck
+\end{craw}
+
+\begin{code}{.0}
+DATA merged;
+   \textcolor{OrangeRed}{MERGE} prof class;
+   \textcolor{OrangeRed}{BY} id;
+RUN;
+\end{code}
+%\vspace{.0in}
+\emp
+\bmp{0.05\textwidth} \hspace{0.05in} \emp
+\bmp{.27\textwidth}
+\begin{craw}{.0}{Data Set CLASS}
+ID CLASS
+1  Stat218
+1  Stat417
+3  Stat150
+3  Stat330
+3  Stat418
+4  Stat251
+4  Stat323
+4  Stat423
+\end{craw}
+\vskip25pt
+\textcolor{White}{x}
+\emp
+\bmp{0.05\textwidth} \hspace{0.05in} \emp
+\bmp{.35\textwidth}
+%\vspace{.0in}
+\begin{craw}{.0}{Data Set MERGED}
+ID  NAME   CLASS
+1   Sklar  Stat218
+1   Sklar  Stat417
+3   Doi    Stat150
+3   Doi    Stat330
+3   Doi    Stat418
+4   Peck   Stat251
+4   Peck   Stat323
+4   Peck   Stat423
+\end{craw}
+\vskip25pt
+\textcolor{White}{x}
+\emp
+\end{frame}
+
+
+%===========================================================================================================================
+\section[Tracking Observations]{Tracking Observations}
+%===========================================================================================================================
+\subsection{}
+\begin{frame}
+\tableofcontents[currentsection, hideallsubsections]
+\end{frame}
+
+\begin{frame}
+\ft{Tracking with \ttt{IN=}}
+\bi
+\item When combining data sets, we can track if an individual observation is present/absent in only one data set or in both
+\item The \fbox{\ttt{IN=}\emph{new-var-name}}  option creates a \emph{temporary} indicator variable with values of 0/1
+\bi
+\item[0 =] observation \underline{not} found in that data set
+\item[1 =] observation found in that data set
+\ei
+\item Can be used with the \ttt{SET} or \ttt{MERGE} statements, but typically it is used with \ttt{MERGE}
+\item These indicator variables are typically used for subsetting data
+\item Visualize this with Venn diagrams:
+\item[] \url{http://analisisydecision.es/wp-content/uploads/2014/12/tipos-de-merge-en-SAS.png}
+\ei
+\end{frame}
+
+
+\begin{frame}[fragile]
+\ft{Example}
+\bmp{0.30\textwidth}
+\footnotesize
+\begin{craw}{.0}{Data Set MEMBERS}
+ID  STATE
+101 NC
+102 CA
+103 CA
+104 WI
+105 NY
+\end{craw}
+\footnotesize
+\begin{craw}{.0}{Data Set ORDERS}
+ID  TOTAL
+102 30.01
+104 254.98
+104 75.00
+101 1600.56
+102 385.30
+\end{craw}
+\emp
+\bmp{0.03\textwidth} \hspace{0.05in} \emp
+\bmp{0.65\textwidth}
+\bi
+\item iFixit is a local SLO based company
+\bi
+\item provides \emph{free} repair guides (phones, washing machines, etc.)
+\item makes money through selling repair tools and parts
+\ei
+\item One database stores member information, another stores member orders
+\item Goal: identify members who haven't made a recent purchase
+\ei
+\oyo What is the data we want?
+\vskip20pt
+\textcolor{White}{x}
+\emp
+\end{frame}
+
+\begin{frame}[fragile]
+\ft{Discussion}
+\bmp{0.45\textwidth}
+\footnotesize
+\begin{code}{.0}
+DATA example;
+   MERGE members (IN=a)
+         orders  (IN=b);
+    BY id;
+    \textcolor{OrangeRed}{IF \emph{condition};}
+RUN;
+\end{code}
+\emp
+\bmp{0.05\textwidth} \hspace{0.05in} \emp
+\bmp{0.45\textwidth}
+\begin{clicker}{Which \ttt{if} statement should you use keep members who haven't made a recent purchase?}
+\begin{enumerate}
+\item \ttt{if a;}
+\item \ttt{if b;}
+\item \ttt{if a and b;}
+\item \ttt{if a or b;}
+\item \ttt{if a and not b;}
+\item \ttt{if not a and b;}
+\item \ttt{if not (a and b);}
+\end{enumerate}
+\end{clicker}
+
+\emp
+\end{frame}
+
+\end{document} 

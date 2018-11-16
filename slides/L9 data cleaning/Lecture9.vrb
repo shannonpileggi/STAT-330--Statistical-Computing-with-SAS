@@ -1,0 +1,15 @@
+\ft{Step 3: Verify that coding was done correctly, method 2.}
+\framesubtitle{\underline{Lab 4 Q13:} Use the \texttt{GPA\_clean} variable to create a new variable called \texttt{honors} that classifies students according to their current GPA; students who do not yet achieve honors should be classified as ``none''.}
+\bmp{0.5\textwidth}
+\footnotesize
+\begin{code}{.0}
+PROC FREQ DATA = survey4 ;
+  TABLES honors * GPA_clean /
+  LIST MISSING;
+RUN ;
+\end{code}
+\emp
+\bmp{0.02\textwidth} \hspace{1in} \emp
+\bmp{0.5\textwidth}
+\includegraphics[trim=3cm 15cm 3cm 0.5cm,clip,width=1.0\textwidth]{L9_qcstep3b.pdf}
+\emp
